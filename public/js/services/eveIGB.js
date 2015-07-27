@@ -66,8 +66,8 @@ app.factory('EveIGB', function() {
         EveIGB.startConversation = function (characterId) {CCPEVE.startConversation(characterId)}
 
         // Extensions
-        EveIGB.showCharacter = function(item){
-            EveIGB.showInfo(1377, item.characterId);
+        EveIGB.showCharacter = function(characterId){
+            EveIGB.showInfo(1377, characterId);
         };
 
         EveIGB.showCorporation = function(corporationId){

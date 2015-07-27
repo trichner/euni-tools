@@ -9,9 +9,53 @@
 	width: 20%;
 }
 
+#employmentLogo {
+	/*position: absolute;*/
+	/*left: 5%;*/
+	/*bottom: 5%;*/
+	width: 100%;
+}
+
 #allianceLogo {
 	position: absolute;
 	right: 5%;
 	bottom: 5%;
 	width: 20%;
+}
+
+#characterName {
+	font-size: large;
+	font-weight: bold;
+	text-align: center;
+}
+
+.vcenter {
+	display: inline-block;
+	vertical-align: middle;
+	float: none;
+}
+
+.scroll-col {
+	max-height: 294px;
+	overflow: auto;
+}
+
+.employment {
+	border-bottom: 1px solid white;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.employment:last-child {
+	border-bottom: 0px;
+}
+
+.text-red {
+	color: orange;
+	font-weight: bold;
+}
+
+.text-green {
+	color: yellowgreen;
+	font-weight: bold;
 }

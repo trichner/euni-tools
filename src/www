@@ -29,11 +29,22 @@ var server = http.createServer(root);
  * Listen on provided port, on all network interfaces.
  */
 
-models.sequelize.sync().then(function () {
+//models.sequelize.sync().then(function () {
   server.listen(port);
   server.on('error', onError);
   server.on('listening', onListening);
-});
+//});
+
+var crest = require('./services/crest');
+crest.getCharacter('698922015')
+    .then(function (char) {
+      console.log(JSON.stringify(char))
+    })
+crest.getCharacter('91541581')
+    .then(function (char) {
+      console.log('Laura:')
+      console.log(JSON.stringify(char))
+    })
 
 /**
  * Normalize a port into a number, string, or false.

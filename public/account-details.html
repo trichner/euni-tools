@@ -12,6 +12,7 @@
     <script src="dependencies/angular/angular.js" defer></script>
 	<script src="dependencies/angular-bootstrap/ui-bootstrap.js" defer></script>
 	<script src="dependencies/angular-ui-notification-0.0.5/angular-ui-notification.min.js" defer></script>
+	<script src="dependencies/angular-timeago/src/timeAgo.js" defer></script>
 	<script src="js/app.js" defer></script>
     <script src="js/controllers/AccountDetails.js" defer></script>
 	<script src="js/services/API.js" defer></script>
@@ -22,20 +23,86 @@
 <body ng-controller="AccountDetailsCtrl">
 <div class="container">
 	<div class="row">
-		<div class="col-md-4 actions portrait">
-			<img src="{{eveimg.imgUrlCharacter(698922015,512)}}" width="100%"
-				 ng-click="eveigb.showCharacter(698922015)"/>
-			<img id="allianceLogo" src="{{eveimg.imgUrlAlliance(937872513,128)}}"
-				 ng-click="eveigb.showAlliance(937872513)">
-			<img id="corporationLogo" src="{{eveimg.imgUrlCorporation(917701062,128)}}"
-				 ng-click="eveigb.showCorporation(917701062)">
+		<div class="col-xs-12">
+			<h1 id="characterName">Thomion</h1>
 		</div>
-		<div class="col-md-4 actions">world</div>
-		<div class="col-md-4 actions">trolo!</div>
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-4">
+			<div class="actions portrait">
+				<img ng-src="{{eveimg.imgUrlCharacter(character.id,512)}}"
+					 width="100%"
+					 ng-click="eveigb.showCharacter(character.id)"
+						title="{{character.name}}"/>
+				<img id="allianceLogo" ng-src="{{eveimg.imgUrlAlliance(character.alliance.id,128)}}"
+					 ng-click="eveigb.showAlliance(character.alliance.id)"
+						title="{{character.alliance.name}}">
+				<img id="corporationLogo" ng-src="{{eveimg.imgUrlCorporation(character.corporation.id,128)}}"
+					 ng-click="eveigb.showCorporation(character.corporation.id)"
+						title="{{character.corporation.name}}">
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="actions">
+				<table class="table">
+					<tbody>
+					<tr>
+						<td class="text-right col-xs-4">Created on:</td>
+						<td>{{employmentHistory[0].startDate | date:'dd.MM.yy'}} ({{employmentHistory[0].startDate | timeAgo}})</td>
+					</tr>
+					<tr>
+						<td class="text-right col-xs-4">Skillpoints:</td>
+						<td ng-class="{'text-red': characterDetails.skillpoints > 10000000}">
+							{{characterDetails.skillpoints | number:0}}
+						</td>
+					</tr>
+					<tr>
+						<td class="text-right col-xs-4">Played:</td>
+						<td>553h</td>
+					</tr>
+					<tr>
+						<td class="text-right col-xs-4">Balance:</td>
+						<td>
+							{{characterDetails.walletBalance | number : 0}} ISK
+						</td>
+					</tr>
+					<tr>
+						<td class="text-right col-xs-4">Security Status:</td>
+						<td ng-class="{'text-green': character.securityStatus > 0}"
+							ng-class="{'text-red': character.securityStatus < 0}">
+							{{character.securityStatus | number : 2 }}
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="actions">
+				<div class="row employment" ng-repeat="employment in employmentHistory">
+					<div class="col-md-3">
+						<img id="employmentLogo" ng-src="{{eveimg.imgUrlCorporation(employment.corporation.id,128)}}"
+							 ng-click="eveigb.showCorporation(employment.corporation.id)"
+							 title="{{employment.corporation.name}}">
+					</div>
+					<div class="col-md-9">
+						<div class="row"><b>{{employment.corporation.name}}</b></div>
+						<div class="row">{{employment.startDate | date}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-6 actions">hello</div>
-		<div class="col-md-6 actions">world</div>
+		<div class="col-md-6">
+			<div class="actions">Hello</div>
+		</div>
+		<div class="col-md-6">
+			<div class="actions">World</div>
+		</div>
 	</div>
 	<div id="footer">
 		Eve University Tools

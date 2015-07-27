@@ -19,6 +19,9 @@ app.factory('EveIMG', function() {
     }
 
     function assembleUrl(prefix,id,width,imgType){
+        if(!id){
+            return '';
+        }
         return prefix + String(id) + '_' + String(width) + imgType
     }
     return {

@@ -15,7 +15,24 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
     $scope.eveimg = EveIMG;
     $scope.eveigb = EveIGB;
 
+    $scope.character = {};
+    $scope.employmentHistory = [];
+    $scope.characterDetails = {};
 
+    API.getCharacter(698922015)
+        .then(function (res) {
+            $scope.character = res.data;
+        })
+
+    API.getCharacterEmploymentHistory(698922015)
+        .then(function (res) {
+            $scope.employmentHistory = res.data;
+        })
+
+    API.getCharacterDetails(698922015)
+        .then(function (res) {
+            $scope.characterDetails = res.data;
+        })
 
     $scope.logout = function () {
         //API.logout()
