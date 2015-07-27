@@ -55,7 +55,11 @@ app.factory('API', ['$q','$http',function($q,$http) {
     }
 
     API.getCharacterDetails = function(characterID){
-        return $http.get(URL.CHARACTERS + '/' + characterID + URL.DETAILS);
+        return $http.get(URL.CHARACTERS + '/' + characterID + URL.DETAILS)
+            .then(function (res) {
+                res.data.dateOfBirth = new Date(res.data.dateOfBirth);
+                return res;
+            })
     }
 
 

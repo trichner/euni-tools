@@ -18,7 +18,8 @@ var character = {
 
 var characterDetails = {
     skillpoints: 31000000,
-    walletBalance: 333000000
+    walletBalance: 333000000,
+    dateOfBirth: "2010-06-11 18:41:00"
 }
 
 var employmentHistory = [
@@ -119,6 +120,12 @@ var characterApiPulls = [
         pulledBy: "698922015",
         characterID: "698922015",
         pulledAt: new Date('1.2.2015')
+    }
+]
+
+var linkedAccounts = [
+    {
+
     }
 ]
 
