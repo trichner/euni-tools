@@ -1,4 +1,4 @@
-app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','$window','API','EveIGB','Notification','EveIMG',function ($scope,$http,$location,$interval,$window,API,EveIGB,Notification,EveIMG) {
+app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','$window','API','EveIGB','Notification','EveIMG','Linky',function ($scope,$http,$location,$interval,$window,API,EveIGB,Notification,EveIMG,Linky) {
 
     //=== Vars
     $scope.waitlists = {waitlists:[]};
@@ -18,10 +18,12 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
     $scope.character = {};
     $scope.employmentHistory = [];
     $scope.characterDetails = {};
+    $scope.thirdPartySearches = [];
 
     API.getCharacter(698922015)
         .then(function (res) {
             $scope.character = res.data;
+            $scope.thirdPartySearches = Linky.urlsThirdPartySearch(res.data);
         })
 
     API.getCharacterEmploymentHistory(698922015)

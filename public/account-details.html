@@ -20,6 +20,7 @@
 	<script src="js/services/Minions.js" defer></script>
 	<script src="js/services/eveIGB.js" defer></script>
 	<script src="js/services/eveIMG.js" defer></script>
+	<script src="js/services/linky.js" defer></script>
 </head>
 <body ng-controller="AccountDetailsCtrl">
 <div class="container">
@@ -94,6 +95,15 @@
 						<div class="row"><b>{{employment.corporation.name}}</b></div>
 						<div class="row">{{employment.startDate | date}}</div>
 					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div   class="col-md-12">
+			<div class="actions float-container">
+				<div ng-repeat="item in thirdPartySearches" class="url-box">
+					<a href="{{item.url}}" target="_blank">{{item.title}}</a>
 				</div>
 			</div>
 		</div>
