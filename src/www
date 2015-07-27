@@ -18,7 +18,7 @@ var models = require("./models");
 
 var port = normalizePort(process.env.PORT || '3000');
 root.set('port', port);
-root.use('/nemesis', app);
+root.use('/euni-tools', app);
 /**
  * Create HTTP server.
  */
