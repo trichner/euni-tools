@@ -43,4 +43,5 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
         //        Notification.error('failed to logout :(');
         //    })
     }
+
 }]);
