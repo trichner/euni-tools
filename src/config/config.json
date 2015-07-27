@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "1234",
+    "database": "tools",
+    "host": "localhost",
+    "dialect": "mysql",
+    "authRequired" : false,
+    "eveSsoCallback": "http://localhost:3000/euni-tools/api/auth/callback"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "tools",
+    "password": "1234",
+    "database": "tools",
+    "host": "localhost",
+    "dialect": "mysql",
+    "eveSsoCallback" :  "https://k42.ch/euni-tools/api/auth/callback"
+  }
+}

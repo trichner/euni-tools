@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" id="ng-app" ng-app="euniTools">
+<head>
+	<link rel="stylesheet" type="text/css" href="style/angular-ui-notification.min.css" />
+	<link rel="stylesheet" type="text/css" href="dependencies/bootstrap/dist/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="style/index.css" />
+	<link rel="stylesheet" type="text/css" href="style/account-details.css" />
+	<link rel="icon" type="image/png" href="img/ivy_logo_4.png">
+
+    <meta charset="utf-8">
+    <title>Eve University Tools</title>
+    <script src="dependencies/angular/angular.js" defer></script>
+	<script src="dependencies/angular-bootstrap/ui-bootstrap.js" defer></script>
+	<script src="dependencies/angular-ui-notification-0.0.5/angular-ui-notification.min.js" defer></script>
+	<script src="js/app.js" defer></script>
+    <script src="js/controllers/AccountDetails.js" defer></script>
+	<script src="js/services/API.js" defer></script>
+	<script src="js/services/Minions.js" defer></script>
+	<script src="js/services/eveIGB.js" defer></script>
+	<script src="js/services/eveIMG.js" defer></script>
+</head>
+<body ng-controller="AccountDetailsCtrl">
+<div class="container">
+	<div class="row">
+		<div class="col-md-4 actions portrait">
+			<img src="{{eveimg.imgUrlCharacter(698922015,512)}}" width="100%"
+				 ng-click="eveigb.showCharacter(698922015)"/>
+			<img id="allianceLogo" src="{{eveimg.imgUrlAlliance(937872513,128)}}"
+				 ng-click="eveigb.showAlliance(937872513)">
+			<img id="corporationLogo" src="{{eveimg.imgUrlCorporation(917701062,128)}}"
+				 ng-click="eveigb.showCorporation(917701062)">
+		</div>
+		<div class="col-md-4 actions">world</div>
+		<div class="col-md-4 actions">trolo!</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 actions">hello</div>
+		<div class="col-md-6 actions">world</div>
+	</div>
+	<div id="footer">
+		Eve University Tools
+	</div>
+</div>
+</body>
+</html>

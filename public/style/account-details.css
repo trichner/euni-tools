@@ -1,0 +1,17 @@
+.portrait {
+	position: relative;
+}
+
+#corporationLogo {
+	position: absolute;
+	left: 5%;
+	bottom: 5%;
+	width: 20%;
+}
+
+#allianceLogo {
+	position: absolute;
+	right: 5%;
+	bottom: 5%;
+	width: 20%;
+}

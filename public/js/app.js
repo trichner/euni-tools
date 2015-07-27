@@ -1,0 +1,1 @@
+var app = angular.module('euniTools', ['ui-notification','ui.bootstrap']);
