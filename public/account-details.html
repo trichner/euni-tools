@@ -110,10 +110,22 @@
 	</div>
 	<div class="row">
 		<div class="col-md-4">
-			<div class="actions">Notes</div>
+			<div class="actions">
+				<span><b>Notes</b></span>
+				<div ng-repeat="note in notes">
+					<div>{{note.createdAt | date:'dd.MM.yy'}} - {{note.type}} by {{note.authorID}}</div>
+					<div>{{note.note}}</div>
+				</div>
+			</div>
 		</div>
 		<div class="col-md-4">
-			<div class="actions">Logs</div>
+			<div class="actions">
+				<span><b>Logs</b></span>
+				<div ng-repeat="log in logs">
+					<div>{{log.createdAt | date:'dd.MM.yy'}} - {{log.type}} {{log.description}}</div>
+					<div>{{log.log}}</div>
+				</div>
+			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="actions">Actions</div>

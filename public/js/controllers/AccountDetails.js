@@ -20,6 +20,9 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
     $scope.characterDetails = {};
     $scope.thirdPartySearches = [];
 
+    $scope.notes = [];
+    $scope.logs = [];
+
     API.getCharacter(698922015)
         .then(function (res) {
             $scope.character = res.data;
@@ -34,6 +37,16 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
     API.getCharacterDetails(698922015)
         .then(function (res) {
             $scope.characterDetails = res.data;
+        })
+
+    API.getCharacterLogs(698922015)
+        .then(function (res) {
+            $scope.logs = res.data;
+        })
+
+    API.getCharacterNotes(698922015)
+        .then(function (res) {
+            $scope.notes = res.data;
         })
 
     $scope.logout = function () {
