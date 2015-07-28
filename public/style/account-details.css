@@ -42,12 +42,12 @@
 
 .employment {
 	border-bottom: 1px solid white;
-	margin-left: 0px;
-	margin-right: 0px;
+	margin-left: 0;
+	margin-right: 0;
 }
 
 .employment:last-child {
-	border-bottom: 0px;
+	border-bottom: 0;
 }
 
 .text-red {

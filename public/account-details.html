@@ -26,7 +26,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
-			<h1 id="characterName">Thomion</h1>
+			<h1 id="characterName" ng-click="eveigb.showCharacter(character.id)">Thomion</h1>
 		</div>
 	</div>
 
@@ -103,20 +103,20 @@
 		<div   class="col-md-12">
 			<div class="actions float-container">
 				<div ng-repeat="item in thirdPartySearches" class="url-box">
-					<a href="{{item.url}}" target="_blank">{{item.title}}</a>
+					<b><a href="{{item.url}}" target="_blank">{{item.title}}</a></b>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-4">
-			<div class="actions">Hello</div>
+			<div class="actions">Notes</div>
 		</div>
 		<div class="col-md-4">
-			<div class="actions">Hello</div>
+			<div class="actions">Logs</div>
 		</div>
 		<div class="col-md-4">
-			<div class="actions">World</div>
+			<div class="actions">Actions</div>
 		</div>
 	</div>
 	<div id="footer">
