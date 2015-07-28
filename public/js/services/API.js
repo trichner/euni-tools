@@ -7,16 +7,17 @@ app.factory('API', ['$q','$http',function($q,$http) {
     var URL = {
         AUTH : API_PREFIX +'/auth',
         ACCOUNTS : API_PREFIX +'/accounts',
-        LINKED: '/linked',
+        LINKED: '/linked.json',
         CHARACTERS : API_PREFIX +'/characters',
-        API_PULLS : '/api-pulls',
-        NOTES : '/notes',
-        DETAILS : '/details',
-        LOGS : '/logs',
-        STANDINGS : '/standings',
-        EMPLOYMENT_HISTORY : '/employment-history',
-        APPS : API_PREFIX +'/apps',
-        ME : API_PREFIX +'/me'
+        API_PULLS : '/api-pulls.json',
+        NOTES : '/notes.json',
+        ACTIONS : '/actions.json',
+        DETAILS : '/details.json',
+        LOGS : '/logs.json',
+        STANDINGS : '/standings.json',
+        EMPLOYMENT_HISTORY : '/employment-history.json',
+        APPS : API_PREFIX +'/apps.json',
+        ME : API_PREFIX +'/me.json'
     }
 
     API.getAccounts = function(){
@@ -43,6 +44,10 @@ app.factory('API', ['$q','$http',function($q,$http) {
         return $http.get(URL.CHARACTERS + '/' + characterID + URL.NOTES);
     }
 
+    API.getCharacterActions = function(characterID){
+        return $http.get(URL.CHARACTERS + '/' + characterID + URL.ACTIONS);
+    }
+
     API.getCharacterEmploymentHistory = function(characterID){
         return $http.get(URL.CHARACTERS + '/' + characterID + URL.EMPLOYMENT_HISTORY)
             .then(function (res) {
@@ -60,6 +65,21 @@ app.factory('API', ['$q','$http',function($q,$http) {
                 res.data.dateOfBirth = new Date(res.data.dateOfBirth);
                 return res;
             })
+    }
+
+
+    API.postCharacterLog = function(characterID,type,log){
+        return $http.post(URL.CHARACTERS + '/' + characterID + URL.LOGS,{
+            log: log,
+            type: type
+        });
+    }
+
+    API.postCharacterNote = function(characterID,type,note){
+        return $http.post(URL.CHARACTERS + '/' + characterID + URL.NOTES,{
+            note: note,
+            type: type
+        });
     }
 
 

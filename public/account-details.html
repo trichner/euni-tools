@@ -64,7 +64,7 @@
 					</tr>
 					<tr>
 						<td class="text-right col-xs-4">Played:</td>
-						<td>553h</td>
+						<td>{{characterDetails.logonMinutes/60 | number:0}}h ({{characterDetails.logonCount}} logons)</td>
 					</tr>
 					<tr>
 						<td class="text-right col-xs-4">Balance:</td>
@@ -111,28 +111,52 @@
 	<div class="row" ng-cloak>
 		<div class="col-md-4">
 			<div class="actions">
-				<div class="bottom-border"><b>Notes</b></div>
-				<div ng-repeat="note in notes">
+				<div class="box-title"><b>Notes</b></div>
+				<div class="bottom-border" ng-repeat="note in notes">
 					<div>{{note.createdAt | date:'dd.MM.yy'}} - {{note.type}} by {{note.authorID}}</div>
 					<div>{{note.note}}</div>
 				</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="actions">
-				<div class="bottom-border"><b>Logs</b></div>
-				<div ng-repeat="log in logs">
-					<div>{{log.createdAt | date:'dd.MM.yy'}} - {{log.type}} {{log.description}}</div>
-					<div>{{log.log}}</div>
+				<textarea class="text-box" ng-model="note" placeholder="write new note here..." rows="5" width="100%">
+				</textarea>
+				<div class="text-center">
+					<div class="btn-group" dropdown>
+						<button type="button" class="btn btn-primary" dropdown-toggle ng-disabled="disabled">
+							post note<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+							<li ng-repeat="type in noteTypes" ng-click="postNote(type)" role="menuitem" class="selection"><p>{{type.name}}</p></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="actions">
-				<div class="bottom-border"><b>Actions</b></div>
-				<div ng-repeat="log in logs">
-					<div>{{log.createdAt | date:'dd.MM.yy'}} - {{log.type}} {{log.description}}</div>
+				<div class="box-title"><b>Logs</b></div>
+				<div class="bottom-border" ng-repeat="log in logs">
+					<div>{{log.createdAt | date:'dd.MM.yy'}} - {{log.type}} - {{log.description}}</div>
 					<div>{{log.log}}</div>
+				</div>
+
+				<textarea class="text-box" ng-model="log" placeholder="paste new log here..." rows="5" width="100%">
+				</textarea>
+				<div class="text-center">
+					<div class="btn-group" dropdown>
+						<button type="button" class="btn btn-primary" dropdown-toggle ng-disabled="disabled">
+							post log<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="single-button">
+							<li ng-repeat="type in logTypes" ng-click="postLog(type)" role="menuitem" class="selection"><p>{{type.name}}</p></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="actions">
+				<div class="box-title"><b>Actions</b></div>
+				<div ng-repeat="action in actions" class="bottom-border">
+					<div>{{action.createdAt | date:'dd.MM.yy'}} - {{action.action}} - {{action.actor.name}}</div>
 				</div>
 			</div>
 		</div>

@@ -22,6 +22,30 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
 
     $scope.notes = [];
     $scope.logs = [];
+    $scope.actions = [];
+
+    $scope.note = "";
+    $scope.log = "";
+
+    $scope.logTypes = [
+        {name:"Interview"},
+        {name:"Titles"},
+        {name:"Director"}
+    ]
+
+    $scope.noteTypes = [
+        {name:"Personnel"},
+        {name:"Titles"},
+        {name:"Director"}
+    ]
+
+    $scope.postLog = function (type) {
+        API.postCharacterLog($scope.character.id, type.name, $scope.log);
+    }
+
+    $scope.postNote = function (type) {
+        API.postCharacterNote($scope.character.id, type.name, $scope.note);
+    }
 
     API.getCharacter(698922015)
         .then(function (res) {
@@ -47,6 +71,11 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
     API.getCharacterNotes(698922015)
         .then(function (res) {
             $scope.notes = res.data;
+        })
+
+    API.getCharacterActions(698922015)
+        .then(function (res) {
+            $scope.actions = res.data;
         })
 
     $scope.logout = function () {

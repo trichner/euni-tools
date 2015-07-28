@@ -1,6 +1,7 @@
 
 var service = require('./../services/service');
 var router = require('express').Router();
+var sanitizer = require('sanitizer');
 
 var character = {
     id: "698922015",
@@ -19,7 +20,9 @@ var character = {
 var characterDetails = {
     skillpoints: 31000000,
     walletBalance: 333000000,
-    dateOfBirth: "2010-06-11 18:41:00"
+    dateOfBirth: "2010-06-11 18:41:00",
+    logonMinutes: 60*555,
+    logonCount: 212
 }
 
 var employmentHistory = [
@@ -80,7 +83,7 @@ var characterLogs = [
         converseeID: "698922015",
         createdAt: new Date("11.1.2014"),
         log: "THis is the actual log, could be very long",
-        description: "Interview Log by Laura",
+        description: "Log by Laura",
         type: "Interview"
     },
     {
@@ -88,7 +91,7 @@ var characterLogs = [
         converseeID: "698922015",
         createdAt: new Date("3.1.2014"),
         log: "THis is another log, could be veeeeery long",
-        description: "Interview Log by Dunar",
+        description: "Log by Dunar",
         type: "Titles"
     }
 ]
@@ -121,47 +124,82 @@ var characterApiPulls = [
         characterID: "698922015",
         pulledAt: new Date('1.2.2015')
     }
-]
+];
 
 var linkedAccounts = [
 
-]
+];
 
 var characterActions = [
     {
-        createdAt: new Date("1.1.2014"),
+        createdAt: new Date("1.4.2014"),
         action: "Accepted",
-        actedBy: "698922015"
+        actor: {
+            id: "91541581",
+            name: "Laura Karpinski"
+        }
+    },
+    {
+        createdAt: new Date("3.2.2014"),
+        action: "Rejected",
+        actor: {
+            id: "91541581",
+            name: "Laura Karpinski"
+        }
     }
-]
+];
 
 
 router.get('/:id', function (req, res, next) {
     return res.json(character);
 });
 
-router.get('/:id/employment-history', function (req, res, next) {
+router.get('/:id/employment-history.json', function (req, res, next) {
     return res.json(employmentHistory);
 });
 
-router.get('/:id/api-pulls', function (req, res, next) {
+router.get('/:id/api-pulls.json', function (req, res, next) {
     return res.json(characterApiPulls);
 });
 
-router.get('/:id/notes', function (req, res, next) {
+router.get('/:id/notes.json', function (req, res, next) {
     return res.json(characterNotes);
 });
 
-router.get('/:id/logs', function (req, res, next) {
+router.get('/:id/logs.json', function (req, res, next) {
     return res.json(characterLogs);
 });
 
-router.get('/:id/details', function (req, res, next) {
+router.get('/:id/details.json', function (req, res, next) {
     return res.json(characterDetails)
 });
 
-router.get('/:id/actions', function (req, res, next) {
+router.get('/:id/actions.json', function (req, res, next) {
     return res.json(characterActions)
+});
+
+router.post('/:id/notes.json', function (req, res, next) {
+    var characterId = req.params.id;
+    var actingId = req.session.characterId;
+    var note = req.body.note;
+    var type = req.body.type;
+    // sanitize!
+    note = sanitizer.sanitize(note);
+    type = sanitizer.sanitize(type);
+    console.log(note);
+    return res.status(204).end();
+});
+
+router.post('/:id/logs.json', function (req, res, next) {
+    var characterId = req.params.id;
+    var actingId = req.session.characterId;
+    var log = req.body.log;
+    var type = req.body.type;
+    // sanitize!
+    log = sanitizer.sanitize(log);
+    type = sanitizer.sanitize(type);
+    console.log(log);
+    return res.status(204).end();
 });
 
 module.exports = router;
