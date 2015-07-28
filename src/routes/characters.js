@@ -124,8 +124,14 @@ var characterApiPulls = [
 ]
 
 var linkedAccounts = [
-    {
 
+]
+
+var characterActions = [
+    {
+        createdAt: new Date("1.1.2014"),
+        action: "Accepted",
+        actedBy: "698922015"
     }
 ]
 
@@ -152,6 +158,10 @@ router.get('/:id/logs', function (req, res, next) {
 
 router.get('/:id/details', function (req, res, next) {
     return res.json(characterDetails)
+});
+
+router.get('/:id/actions', function (req, res, next) {
+    return res.json(characterActions)
 });
 
 module.exports = router;

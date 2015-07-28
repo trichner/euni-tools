@@ -24,13 +24,13 @@
 </head>
 <body ng-controller="AccountDetailsCtrl">
 <div class="container">
-	<div class="row">
+	<div class="row" ng-cloak>
 		<div class="col-xs-12">
 			<h1 id="characterName" ng-click="eveigb.showCharacter(character.id)">Thomion</h1>
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row" ng-cloak>
 
 		<div class="col-md-4">
 			<div class="actions portrait">
@@ -99,7 +99,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" ng-cloak>
 		<div   class="col-md-12">
 			<div class="actions float-container">
 				<div ng-repeat="item in thirdPartySearches" class="url-box">
@@ -108,10 +108,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" ng-cloak>
 		<div class="col-md-4">
 			<div class="actions">
-				<span><b>Notes</b></span>
+				<div class="bottom-border"><b>Notes</b></div>
 				<div ng-repeat="note in notes">
 					<div>{{note.createdAt | date:'dd.MM.yy'}} - {{note.type}} by {{note.authorID}}</div>
 					<div>{{note.note}}</div>
@@ -120,7 +120,7 @@
 		</div>
 		<div class="col-md-4">
 			<div class="actions">
-				<span><b>Logs</b></span>
+				<div class="bottom-border"><b>Logs</b></div>
 				<div ng-repeat="log in logs">
 					<div>{{log.createdAt | date:'dd.MM.yy'}} - {{log.type}} {{log.description}}</div>
 					<div>{{log.log}}</div>
@@ -128,7 +128,13 @@
 			</div>
 		</div>
 		<div class="col-md-4">
-			<div class="actions">Actions</div>
+			<div class="actions">
+				<div class="bottom-border"><b>Actions</b></div>
+				<div ng-repeat="log in logs">
+					<div>{{log.createdAt | date:'dd.MM.yy'}} - {{log.type}} {{log.description}}</div>
+					<div>{{log.log}}</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div id="footer">
