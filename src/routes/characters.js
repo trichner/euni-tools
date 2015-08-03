@@ -17,6 +17,13 @@ var character = {
     securityStatus: "4.43519929851504"
 }
 
+var account = {
+    id: 1234,
+    apiKey: 1234,
+    apiVCode: "43523452354",
+    updatedAt: Date.now()
+}
+
 var characterDetails = {
     skillpoints: 31000000,
     walletBalance: 333000000,
@@ -126,8 +133,15 @@ var characterApiPulls = [
     }
 ];
 
-var linkedAccounts = [
-
+var linkedCharacters = [
+    {
+        id: 13251,
+        name: "Nib Athmi"
+    },
+    {
+        id: 43332,
+        name: "Lea Aluminium"
+    }
 ];
 
 var characterActions = [
@@ -148,7 +162,6 @@ var characterActions = [
         }
     }
 ];
-
 
 router.get('/:id', function (req, res, next) {
     return res.json(character);
@@ -176,6 +189,18 @@ router.get('/:id/details.json', function (req, res, next) {
 
 router.get('/:id/actions.json', function (req, res, next) {
     return res.json(characterActions)
+});
+
+router.get('/:id/account.json', function (req, res, next) {
+    return res.json(account)
+});
+
+router.get('/:id/titles.json', function (req, res, next) {
+    return res.json({error:"NOT IMPLEMENTED"})
+});
+
+router.get('/:id/linked.json', function (req, res, next) {
+    return res.json(linkedCharacters)
 });
 
 router.post('/:id/notes.json', function (req, res, next) {
