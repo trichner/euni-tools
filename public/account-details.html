@@ -82,6 +82,31 @@
 					</tbody>
 				</table>
 			</div>
+			<div ng-hide="!eveigb.isIGB()" class="actions text-center">
+				<div>
+					<button class="btn btn-default btn-sm" ng-click="eveigb.startConversation(character.id)">
+                        Convo
+                    </button>
+					<button class="btn btn-default btn-sm"
+                            ng-click="eveigb.sendMail(character.id,'Hello','World')">
+                        Eve-Mail
+                    </button>
+					<button class="btn btn-default btn-sm" ng-click="eveigb.addContact(character.id)">
+                        Add Contact
+                    </button>
+					<button class="btn btn-default btn-sm" ng-click="">
+                        Create Contract
+					</button>
+
+				</div>
+			</div>
+            <div class="actions">
+                <div>
+                    <button class="btn btn-default btn-sm" ng-click="status.open = !status.open">
+                        Start Interview
+                    </button>
+                </div>
+            </div>
 		</div>
 		<div class="col-md-4">
 			<div class="actions">

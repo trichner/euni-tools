@@ -25,11 +25,11 @@ app.factory('EveIGB', function() {
         addWaypoint : notimplemented,
         joinChannel : notimplemented,
         joinMailingList : notimplemented,
-        createContract :  notimplemented,
+        createContract :  nop,
         buyType : notimplemented,
         findInContracts : notimplemented,
         addToMarketQuickBar : notimplemented,
-        addContact : notimplemented,
+        addContact : nop,
         removeContact : notimplemented,
         addCorpContact : notimplemented,
         removeCorpContact : notimplemented,
@@ -64,6 +64,17 @@ app.factory('EveIGB', function() {
         EveIGB.inviteToFleet = function(characterId){CCPEVE.inviteToFleet(characterId)};
         EveIGB.sendMail = function(characterId,subject,body){CCPEVE.sendMail(characterId,subject,body)};
         EveIGB.startConversation = function (characterId) {CCPEVE.startConversation(characterId)}
+        EveIGB.createContract = function (contractType,stationId,itemIds) {
+            if(isArray(itemIds)){ itemIds = itemIds.join(); }
+            CCPEVE.createContract(characterId,stationId,itemIds)
+        }
+        EveIGB.addContact = function (characterId) {CCPEVE.addContact(characterId)}
+
+        EveIGB.CONTRACT_TYPE = {
+            ITEM_EXCHANGE : 1,
+            AUCTION : 2,
+            COURIER :3
+        }
 
         // Extensions
         EveIGB.showCharacter = function(characterId){
@@ -76,6 +87,10 @@ app.factory('EveIGB', function() {
         EveIGB.showAlliance = function(allianceId){
             EveIGB.showInfo(16159,allianceId);
         };
+    }
+
+    function isArray(obj){
+        return Object.prototype.toString.call(obj) === '[object Array]';
     }
     return EveIGB;
 });
