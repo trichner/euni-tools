@@ -31,7 +31,16 @@
 			<h1 id="characterName" ng-click="eveigb.showCharacter(character.id)">Thomion</h1>
 		</div>
 	</div>
-
+	<!-- Third party links -->
+	<div class="row" ng-cloak>
+		<div   class="col-md-12">
+			<div class="actions float-container">
+				<div ng-repeat="item in thirdPartySearches" class="url-box">
+					<b><a href="{{item.url}}" target="_blank">{{item.title}}</a></b>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- 1st ROW -->
 	<div class="row" ng-cloak>
 
@@ -126,16 +135,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- 2nd ROW, third party links -->
-	<div class="row" ng-cloak>
-		<div   class="col-md-12">
-			<div class="actions float-container">
-				<div ng-repeat="item in thirdPartySearches" class="url-box">
-					<b><a href="{{item.url}}" target="_blank">{{item.title}}</a></b>
-				</div>
-			</div>
-		</div>
-	</div>
+
 
 	<!-- 3rd ROW, notes, logs, ... -->
 	<div class="row" ng-cloak>
