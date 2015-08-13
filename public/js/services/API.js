@@ -29,7 +29,7 @@ app.factory('API', ['$q','$http',function($q,$http) {
     }
 
     API.getCharacter = function(characterID){
-        return $http.get(URL.CHARACTERS + '/' + characterID);
+        return $http.get(URL.CHARACTERS + '/' + characterID + '.json');
     }
 
     API.getCharacterApiPulls = function(characterID){
@@ -46,6 +46,10 @@ app.factory('API', ['$q','$http',function($q,$http) {
 
     API.getCharacterActions = function(characterID){
         return $http.get(URL.CHARACTERS + '/' + characterID + URL.ACTIONS);
+    }
+
+    API.getCharacterStandings = function(characterID){
+        return $http.get(URL.CHARACTERS + '/' + characterID + URL.STANDINGS);
     }
 
     API.getCharacterEmploymentHistory = function(characterID){

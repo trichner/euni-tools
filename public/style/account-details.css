@@ -40,13 +40,13 @@
 	overflow: auto;
 }
 
-.employment {
+.actions-list {
 	border-bottom: 1px solid white;
 	margin-left: 0;
 	margin-right: 0;
 }
 
-.employment:last-child {
+.actions-list:last-child {
 	border-bottom: 0;
 }
 

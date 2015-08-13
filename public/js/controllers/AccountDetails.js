@@ -25,7 +25,7 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
         }
     ];
 
-
+    var characterId = 698922015;
 
     //=== Static data
     //=== Vars
@@ -46,6 +46,7 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
     $scope.character = {};
     $scope.employmentHistory = [];
     $scope.characterDetails = {};
+    $scope.characterStandings = {agents:[],NPCCorporations:[],factions:[]};
     $scope.thirdPartySearches = [];
 
     $scope.notes = [];
@@ -67,6 +68,10 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
         {name:"Director"}
     ]
 
+    $scope.conditionalClass = function(condition){
+        return condition ? 'text-green' : 'text-red';
+    }
+
     $scope.postLog = function (type) {
         API.postCharacterLog($scope.character.id, type.name, $scope.log);
     }
@@ -75,33 +80,38 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
         API.postCharacterNote($scope.character.id, type.name, $scope.note);
     }
 
-    API.getCharacter(698922015)
+    API.getCharacter(characterId)
         .then(function (res) {
             $scope.character = res.data;
             $scope.thirdPartySearches = Linky.urlsThirdPartySearch(res.data);
         })
 
-    API.getCharacterEmploymentHistory(698922015)
+    API.getCharacterEmploymentHistory(characterId)
         .then(function (res) {
             $scope.employmentHistory = res.data;
         })
 
-    API.getCharacterDetails(698922015)
+    API.getCharacterDetails(characterId)
         .then(function (res) {
             $scope.characterDetails = res.data;
         })
 
-    API.getCharacterLogs(698922015)
+    API.getCharacterStandings(characterId)
+        .then(function (res) {
+            $scope.characterStandings = res.data;
+        })
+
+    API.getCharacterLogs(characterId)
         .then(function (res) {
             $scope.logs = res.data;
         })
 
-    API.getCharacterNotes(698922015)
+    API.getCharacterNotes(characterId)
         .then(function (res) {
             $scope.notes = res.data;
         })
 
-    API.getCharacterActions(698922015)
+    API.getCharacterActions(characterId)
         .then(function (res) {
             $scope.actions = res.data;
         })

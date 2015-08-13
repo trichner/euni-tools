@@ -163,7 +163,51 @@ var characterActions = [
     }
 ];
 
-router.get('/:id', function (req, res, next) {
+var standings = {
+    agents: [
+            {
+                id: 3009841,
+                name: "Pausent Ansin",
+                standing: 0.35
+            },
+            {
+                id: 3009846,
+                name: "Charie Octienne",
+                standing: 0.1
+            }
+        ],
+    corporations: [
+            {
+                id: 1000061,
+                name: "Freedom Extension",
+                standing: 0.42
+            },
+            {
+                id: 1000094,
+                name: "TransStellar Shipping",
+                standing: 0.02
+            },
+            {
+                id: 1000064,
+                name: "Carthum Conglomerate",
+                standing: 2.3
+            }
+        ],
+    factions: [
+            {
+            id: 500003,
+            name: "Amarr Empire",
+            standing: 1.1
+            },
+            {
+            id: 500020,
+            name: "Serpentis",
+            standing: -3.2
+            }
+        ]
+}
+
+router.get('/:id.json', function (req, res, next) {
     return res.json(character);
 });
 
@@ -189,6 +233,10 @@ router.get('/:id/details.json', function (req, res, next) {
 
 router.get('/:id/actions.json', function (req, res, next) {
     return res.json(characterActions)
+});
+
+router.get('/:id/standings.json', function (req, res, next) {
+    return res.json(standings)
 });
 
 router.get('/:id/account.json', function (req, res, next) {
