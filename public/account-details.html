@@ -184,10 +184,52 @@
 		</div>
 		<div class="col-md-4">
 			<div class="actions">
-				<div class="row actions-list" ng-repeat="(key, standings) in characterStandings">
-					<div class="box-title"><b>{{key | capitalize}}</b></div>
-					<div class="row" ng-repeat="standing in standings | orderBy:'-standing'">
-						<div class="col-sm-10">
+				<div class="row actions-list">
+					<div class="box-title"><b>NPC Agents</b></div>
+					<div class="row" ng-repeat="standing in characterStandings.agents | orderBy:'-standing'">
+						<div class="col-sm-2">
+							<img class="standingsLogo"
+								 ng-src="{{eveimg.imgUrlCharacter(standing.id,128)}}"
+								 ng-click="eveigb.showCharacter(standing.id)"
+								 title="{{standing.name}}">
+						</div>
+						<div class="col-sm-8">
+							{{standing.name}}
+						</div>
+						<div class="col-sm-2" ng-class="conditionalClass(standing.standing > 0)">
+							{{standing.standing}}
+						</div>
+					</div>
+				</div>
+				<div class="row actions-list">
+					<div class="box-title"><b>NPC Corporations</b></div>
+					<div class="row"
+						 ng-repeat="standing in characterStandings.corporations | orderBy:'-standing'">
+						<div class="col-sm-2">
+							<img class="standingsLogo"
+								 ng-src="{{eveimg.imgUrlCorporation(standing.id,128)}}"
+								 ng-click="eveigb.showCorporation(standing.id)"
+								 title="{{standing.name}}">
+						</div>
+						<div class="col-sm-8">
+							{{standing.name}}
+						</div>
+						<div class="col-sm-2" ng-class="conditionalClass(standing.standing > 0)">
+							{{standing.standing}}
+						</div>
+					</div>
+				</div>
+				<div class="row actions-list">
+					<div class="box-title"><b>Factions</b></div>
+					<div class="row"
+						 ng-repeat="standing in characterStandings.factions | orderBy:'-standing'">
+						<div class="col-sm-2">
+							<img class="standingsLogo"
+								 ng-src="{{eveimg.imgUrlAlliance(standing.id,128)}}"
+								 ng-click="eveigb.showAlliance(standing.id)"
+								 title="{{standing.name}}">
+						</div>
+						<div class="col-sm-8">
 							{{standing.name}}
 						</div>
 						<div class="col-sm-2" ng-class="conditionalClass(standing.standing > 0)">

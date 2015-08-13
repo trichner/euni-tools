@@ -16,6 +16,14 @@
 	width: 100%;
 }
 
+.standingsLogo {
+	/*position: absolute;*/
+	/*left: 5%;*/
+	/*bottom: 5%;*/
+	width: 100%;
+}
+
+
 #allianceLogo {
 	position: absolute;
 	right: 5%;
