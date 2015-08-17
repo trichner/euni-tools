@@ -27,7 +27,6 @@ app.factory('Linky', function() {
 
     var EVE_GATE_BIO = "https://gate.eveonline.com/Profile/{:character.name}/InfoPanel?tab=Bio"
 
-
     function substitute(url,character){
         var characterName = window.encodeURIComponent(character.name);
         var characterId = window.encodeURIComponent(character.id);
