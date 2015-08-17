@@ -8,7 +8,7 @@ var credentials = require(__dirname + '/../config/evesso.json');
 var env       = process.env.NODE_ENV || "development";
 var config    = require(__dirname + '/../config/config.json')[env];
 var authRequired = config.authRequired !== undefined ? config.authRequired : true;
-var callbackURL = config.eveSsoCallback || "http://localhost:3000/nemesis/api/auth/callback";
+var callbackURL = config.eveSsoCallback || "http://localhost:3000/euni-tools/api/auth/callback";
 
 var router = require('express').Router();
 
@@ -54,8 +54,8 @@ router.use(passport.session());
 router.get('/auth', passport.authenticate('oauth2'));
 router.get('/auth/callback',
     passport.authenticate('oauth2',{
-        successRedirect : '/nemesis/',
-        failureRedirect : '/nemesis/'
+        successRedirect : '/euni-tools/', //TODO
+        failureRedirect : '/euni-tools/'
     }));
 
 
