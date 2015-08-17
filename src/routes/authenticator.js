@@ -36,6 +36,7 @@ passport.use(new OAuth2Strategy({
     function(req,accessToken, refreshToken, profile, done) {
         service.createPilot(accessToken)
             .then(function (pilot) {
+                console.log("Query: " + req.query.state);
                 req.session.verified = true;
                 req.session.pilotId = pilot.id;
                 req.session.verified = true;
@@ -51,7 +52,9 @@ passport.use(new OAuth2Strategy({
 router.use(passport.initialize());
 router.use(passport.session());
 
-router.get('/auth', passport.authenticate('oauth2'));
+router.post('/auth', passport.authenticate('oauth2',{
+    state : "HelloWorld" //TODO
+}));
 router.get('/auth/callback',
     passport.authenticate('oauth2',{
         successRedirect : '/euni-tools/', //TODO
