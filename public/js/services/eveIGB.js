@@ -1,5 +1,11 @@
 /**
- * Created by Thomas on 13.04.2015.
+ * eveIGB
+ *
+ * Angular service that presents the Eve Online in-game browser javascript
+ * methods.
+ *
+ *  Created: 13.04.2015
+ *  Author: Thomas Richner - mail@trichner.ch
  */
 app.factory('EveIGB', function() {
 

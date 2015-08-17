@@ -1,7 +1,11 @@
 /**
- * Created by Thomas on 13.04.2015.
+ * eveIMG
  *
+ * Angular service to assemble URLs for the Eve Online image server.
  * https://image.eveonline.com/
+ *
+ *  Created: 13.04.2015
+ *  Author: Thomas Richner - mail@trichner.ch
  */
 app.factory('EveIMG', function() {
     var IMG_SERVER = 'https://image.eveonline.com/';

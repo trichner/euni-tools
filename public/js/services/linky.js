@@ -1,9 +1,11 @@
 /**
- * Created by Thomas on 13.04.2015.
+ * linky
  *
- * https://image.eveonline.com/
+ * Angular service to assemble URLs to check characters on third party websites
+ *
+ *  Created: 13.04.2015
+ *  Author: Thomas Richner - mail@trichner.ch
  */
-
 app.factory('Linky', function() {
 
     var thirdPartySearch = [

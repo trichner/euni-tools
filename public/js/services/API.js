@@ -1,5 +1,10 @@
 /**
- * Created by Thomas on 13.04.2015.
+ * API
+ *
+ * Angular service to interact with the e-uni tools backend.
+ *
+ *  Created: 13.04.2015
+ *  Author: Thomas Richner - mail@trichner.ch
  */
 app.factory('API', ['$q','$http',function($q,$http) {
     var API = {};
