@@ -1,0 +1,1042 @@
+/*
+	Uni Tools Main CSS Stylesheet
+	Created by RhoVisions, designer Rohit Sodhia
+*/
+
+body, td, input, select, textarea, button {
+	font-size: 13px;
+	font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+	color: #FFF;
+}
+
+body {
+	background: url('../images/headerBG.jpg') left top repeat-x #000;
+	padding: 0 0 15px;
+}
+
+div {
+	text-align: justify;
+}
+
+p {
+	margin: .75em 0;
+}
+
+input, textarea {
+	padding: 2px 3px;
+	resize: none;
+}
+
+input[type="text"], input[type="password"], input[type="button"], select, textarea, button {
+	background: #100;
+	border: 1px solid;
+	border-color: #960 #B93 #B93 #960;
+}
+
+input[disabled='disabled'] {
+	color: #999;
+}
+
+select {
+	margin-top: 1px;
+}
+
+hr {
+	border: none;
+	height: 1px;
+	color: #BBB;
+	background-color: #BBB;
+	margin: 1.25em 0;
+}
+
+table {
+	width: 100%;
+}
+
+td, th {
+	vertical-align: top;
+	padding: 3px 3px;
+	border: 2px solid #1A1A1A;
+	border-left: 0;
+	border-right: 0;
+}
+
+label {
+	display: block;
+}
+
+ul {
+	list-style: disc;
+	margin-left: 20px;
+}
+
+h1 {
+	text-align: center;
+	font-size: 1.4em;
+	font-weight: bold;
+	margin: 0 0 1em;
+}
+
+h2 {
+	font-size: 1.2em;
+	font-weight: bold;
+	text-align: center;
+	margin: .5em 0;
+}
+
+h3 {
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/* Links */
+a, a:visited, a:active {
+	text-decoration: none;
+	color: #F82;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a.username, a.username:visited, a.username:active {
+	color: #06F;
+}
+
+a.username:hover {
+	text-decoration: underline;
+}
+
+/* ----------------------------------------------------------------------------------------------*/
+
+/* Submits */
+button {
+	background: #000;
+	border: 1px solid #333;
+	color: #F00;
+	padding: 5px 10px;
+	height: auto;
+	font-size: 1.1em;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+button:hover {
+	color: #06D;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/* IDs */
+header, footer {
+	width: 980px;
+	margin: 0 auto;
+}
+
+#content {
+	position: relative;
+	width: 948px;
+	margin: 0 auto 30px;
+	padding: 15px;
+	border: 1px solid #B40;
+	border-top: none;
+	background: #111;
+}
+
+header {
+	position: relative;
+	height: 150px;
+}
+
+#logo {
+	position: absolute;
+	top: 20px;
+	left: 10px;
+}
+
+#content img.absPos, #content #menu, #content #menu #menuRight, #content #bodyB {
+	position: absolute;
+}
+
+#content img.absPos, #content #menu, #content #bodyB {
+	z-index: 10;
+}
+
+#content #bodyTL {
+	top: -20px;
+	left: 0;
+}
+
+#content #bodyTR {
+	top: -20px;
+	right: 0;
+}
+
+#content #bodyBL {
+	bottom: -20px;
+	left: 0;
+}
+
+#content #bodyB {
+	height: 20px;
+	bottom: -20px;
+	background: url('../images/bodyB.png') repeat-x;
+}
+
+#content #bodyBR {
+	bottom: -20px;
+	right: 0;
+}
+
+footer {
+	clear: both;
+	padding: 10px 10px;
+	text-align: center;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/* Menu */
+
+#menu {
+	position: absolute;
+	bottom: 1px;
+	width: 980px;
+	height: 28px;
+}
+
+#menu a {
+	display: block;
+	zoom: 1;
+	padding: 6px 15px;
+	font-size: 1.1em;
+	color: #FFF;
+}
+
+#menu .floatRight a:first-child {
+	margin-right: 0;
+}
+
+#menu .floatLeft a {
+	float: left;
+}
+
+#menu a:hover, #menu .currentTab {
+	background-color: rgba(255, 255, 255, .15);
+}
+
+#submenu {
+	margin-bottom: 2em;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/* Alert Boxes */
+.alertBox_error, .alertBox_success, .alertBox_info {
+	border: 2px solid;
+	margin: 10px 10px 15px;
+	padding: 15px 15px 15px 50px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	font-weight: bold;
+}
+
+.alertBox_error li, .alertBox_success li {
+	margin: .5em 0;
+}
+
+.alertBox_error {
+	border-color: #D00;
+	background-image: url('../images/alerts/error.png');
+	background-color: #B55;
+}
+
+.alertBox_success {
+	border-color: #060;
+	background-image: url('../images/alerts/check.png');
+	background-color: #383;
+}
+
+.alertBox_info {
+	border-color: #39E;
+	background-image: url('../images/alerts/info.png');
+	background-color: #55A;
+}
+
+.alertBox_info a, .alertBox_info a:visited, .alertBox_info a:active {
+	color: #D00;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+.paginate {
+	margin: .5em 0;
+	text-align: center;
+}
+
+.paginate a, .paginate a:visited, .paginate a:active {
+	display: inline-block;
+	margin: 0 2px;
+	padding: 3px 6px;
+	border: 1px solid #D60;
+}
+
+.paginate a.current, .paginate a:hover {
+	background: #222;
+	text-decoration: none;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+/* Classes */
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.tr {
+	padding: 5px 0;
+}
+
+.tr > div {
+	float: left;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.floatRight {
+	float: right;
+}
+
+.noFloat {
+	float: none;
+}
+
+.textLabel {
+	padding-top: 4px;
+}
+
+.alert {
+	font-size: 85%;
+	color: #C00;
+	text-align: left;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+br.gap {
+	font-size: 4px;
+}
+
+.showDiv {
+	display: block;
+}
+
+.hideDiv {
+	display: none;
+}
+
+.showContent {
+	visibility: visible;
+}
+
+.hideContent {
+	visibility: hidden;
+}
+
+.alignLeft {
+	text-align: left;
+}
+
+.alignCenter {
+	text-align: center;
+}
+
+.alignRight {
+	text-align: right;
+}
+
+.buttonPanel {
+	text-align: center;
+}
+
+.buttonPanel button {
+	margin: 5px 0;
+}
+
+.usrImg {
+	max-width: 890px;
+}
+
+br.clear {
+	clear: both;
+}
+
+.jsHide {
+	text-align: center;
+	padding: 1em;
+	margin: 1em;
+	border: 2px solid #600;
+	background: #111;
+	font-weight: bold;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+
+#page_login form {
+	width: 280px;
+	margin: 0 auto;
+}
+
+#page_login .tr {
+	text-align: center;
+}
+
+#page_login label {
+	width: 110px;
+	text-align: right;
+	margin-right: 10px;
+	margin-top: 4px;
+	float: left;
+}
+
+#page_login input {
+	width: 150px;
+}
+
+/* ---------------------------------------------------- */
+
+#page_titleApp #waitingApps {
+	margin-bottom: 2em;
+}
+
+#page_titleApp textarea {
+	width: 932px;
+	height: 10em;
+}
+
+#page_api form {
+	width: 720px;
+	margin: 0 auto;
+}
+
+#page_api #submitDiv {
+	text-align: center;
+}
+
+#page_api label {
+	width: 150px;
+	text-align: right;
+	margin-right: 10px;
+	margin-top: 4px;
+	float: left;
+}
+
+#page_api input {
+	width: 150px;
+}
+
+#page_api #vCode {
+	width: 550px;
+}
+
+/* ---------------------------------------------------- */
+
+#page_apply .question {
+	margin-bottom: 1.5em;
+}
+
+#page_apply form > p {
+	font-style: italic;
+}
+
+#page_apply .question h3 {
+	font-size: 1.1em;
+	margin-bottom: .75em;
+	text-decoration: none;
+}
+
+#page_apply .question > p {
+	color: #999;
+}
+
+#page_apply .question li {
+	list-style: none;
+	padding-bottom: .5em;
+}
+
+#page_apply .question li input[type="radio"], #page_apply .question li input[type="checkbox"] {
+	margin-right: 10px;
+}
+
+#page_apply .question input[type="text"] {
+	width: 200px;
+}
+
+#page_apply .question textarea {
+	width: 932px;
+	height: 10em;
+}
+
+#page_apply .btn_submit {
+	margin-right: 20px;
+}
+
+/* ---------------------------------------------------- */
+
+#page_queue h3 {
+	margin: 1.5em 0 .5em;
+}
+
+/* ---------------------------------------------------- */
+
+#page_admin_charList .tr , #page_admin_charListAll .tr, #page_admin_apichecker .tr {
+	clear: both;
+	height: 22px;
+}
+
+#page_admin_charList .tr:hover, #page_admin_charListAll .tr:hover, #page_admin_apichecker .tr:hover {
+	background: #222;
+}
+
+#page_admin_charList .headers:hover, #page_admin_charListAll .headers:hover, #page_admin_apichecker .headers:hover {
+	background: none;
+}
+
+#page_admin_charList .tr > div, #page_admin_charListAll .tr > div, #page_admin_apichecker .tr > div {
+	border-left: 1px solid #BBB;
+	padding: 3px 8px;
+}
+
+#page_admin_charList .headers, #page_admin_charListAll .headers, #page_admin_apichecker .headers, #page_admin_joinQueue .headers, #page_admin_titleQueue .headers {
+	font-weight: bold;
+}
+
+#queueTable {
+	margin-top: 2em;
+}
+
+#queueTable .headers .joined, #queueTable .headers .timeInQueue, #queueTable .type {
+	text-align: center;
+}
+
+#queueTable .tr .charName {
+	border-left: none;
+	width: 200px;
+}
+
+#queueTable .joined {
+	width: 180px;
+}
+
+#queueTable .timeInQueue {
+	width: 170px;
+}
+
+#queueTable .type {
+	width: 60px
+}
+
+#queueTable .actions {
+}
+
+#queueTable .actions a {
+	margin-right: 20px;
+}
+
+#page_admin_joinQueue #noApps, #page_admin_charList #noChars, #page_admin_apichecker #noChars, #page_admin_charListAll #noChars {
+	clear: both;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-align: center;
+	padding: 20px;
+}
+
+#titleAppsTable .headers .latestApp, #titleAppsTable .headers .submitted {
+	text-align: center;
+}
+
+#titleAppsTable .charName {
+	border-left: none;
+	width: 200px;
+}
+
+#titleAppsTable .latestApp {
+	width: 150px;
+}
+
+#titleAppsTable .submitted {
+	width: 175px;
+}
+
+#page_admin_charList #forms, #page_admin_charListAll #forms, #page_admin_apichecker #forms {
+	margin: 1em 0;
+}
+
+#page_admin_charList #sortForm, #page_admin_charListAll #sortForm, #page_admin_apichecker #sortForm {
+	float: left;
+}
+
+#page_admin_charList #searchForm, #page_admin_charListAll #searchForm, #page_admin_apichecker #searchForm{
+	float: right;
+}
+
+#page_admin_charList #charTable .charName, #page_admin_charListAll #charTable .charName, #page_admin_apichecker #charTable .charName {
+	border-left: none;
+	width: 400px;
+}
+
+#page_admin_charList #charTable .actions, #page_admin_charListAll #charTable .actions, #page_admin_apichecker #charTable .actions {
+	margin-right: 20px;
+	width: 100px;
+}
+
+#page_admin_charList .linker {
+	position: relative;
+	bottom: 35%;
+}
+
+#page_admin_charList #pickLetter, #page_admin_charListAll #pickLetter, #page_admin_apichecker #pickLetter {
+	padding: 1em 0;
+	text-align: center;
+	font-size: 1.2em;
+}
+
+#page_admin_charList #pickLetter a, #page_admin_charListAll #pickLetter a, #page_admin_apichecker #pickLetter a {
+	font-weight: bold;
+}
+
+#page_admin_charList #addCharacter, #page_admin_charListAll #addCharacter, #page_admin_apichecker #addCharacter {
+	margin-top: 1em;
+}
+
+/* ---------------------------------------------------- */
+
+#page_admin_actionSummary .tr, #page_admin_titleActionSummary .tr {
+	clear: both;
+	height: 22px;
+}
+
+#page_admin_actionSummary .tr:hover, #page_admin_titleActionSummary .tr:hover {
+	background: #222;
+}
+
+#page_admin_actionSummary .headers:hover, #page_admin_titleActionSummary .headers:hover {
+	background: none;
+}
+
+#page_admin_actionSummary .tr > div, #page_admin_titleActionSummary .tr > div {
+	border-left: 1px solid #BBB;
+	padding: 3px 8px;
+}
+
+#page_admin_actionSummary .headers, #page_admin_titleActionSummary .headers {
+	font-weight: bold;
+}
+
+#page_admin_actionSummary .headers > div, #page_admin_titleActionSummary .headers > div {
+	text-align: center;
+}
+
+#page_admin_actionSummary .tr .date, #page_admin_titleActionSummary .tr .date {
+	border-left: none;
+	width: 180px;
+}
+
+#page_admin_actionSummary .vChar, #page_admin_actionSummary .aChar, #page_admin_titleActionSummary .vChar, #page_admin_titleActionSummary .aChar {
+	width: 175px;
+}
+
+/* ---------------------------------------------------- */
+
+#page_admin_charInfo h1 a {
+	font-weight: normal;
+	font-size: .65em;
+}
+
+#page_admin_charInfo h3 {
+	background-color: #333;
+	border: 1px solid #999;
+	padding: 3px 8px;
+	margin-bottom: .5em;
+	text-decoration: none;
+}
+
+#page_admin_charInfo #linkSet a {
+	margin: 0 30px 0 0;
+}
+
+#page_admin_charInfo #linkSet a:last-child {
+	margin-right: 0;
+}
+
+#page_admin_charInfo #apiControls {
+	height: 32px;
+	margin: 1em 0;
+}
+
+#page_admin_charInfo #pullAPIForm {
+	display: inline;
+	margin-right: 1ex;
+}
+
+#page_admin_charInfo .apiPull {
+	margin-bottom: 1em;
+}
+
+#page_admin_charInfo .apiPull {
+	margin-bottom: 1em;
+}
+
+#page_admin_charInfo .apiPull h3 a {
+	float: right;
+	color: #C00;
+}
+
+#page_admin_charInfo #noAPI {
+	clear: both;
+	font-size: 1.2em;
+	font-weight: bold;
+	text-align: center;
+	padding: 20px;
+}
+
+#page_admin_charInfo .joinApp .tr {
+	clear: both;
+}
+
+#page_admin_charInfo .joinApp .tr label {
+	float: left;
+	font-weight: bold;
+}
+
+#page_admin_charInfo .joinApp .tr div {
+	float: none;
+	margin-left: 210px;
+}
+
+#page_admin_charInfo .joinApp .longform {
+	margin-top: 1em;
+}
+
+#page_admin_charInfo .joinApp .longform label {
+	float: none;
+}
+
+#page_admin_charInfo .joinApp .longform div {
+	margin-top: .5em;
+	margin-left: 0;
+}
+
+#page_admin_charInfo .joinApp h4 {
+	text-decoration: underline;
+	margin-top: 1.5em;
+}
+
+#page_admin_charInfo #noTitleApps, #page_admin_charInfo #noNotes, #page_admin_charInfo #noLogs {
+	font-weight: bold;
+	font-size: 1.2em;
+	text-align: center;
+	padding: 1.5em 0;
+}
+
+#page_admin_charInfo .titleApp .appInfo  {
+	padding-bottom: 1em;
+}
+
+#page_admin_charInfo .titleApp .appInfo .tr {
+	height: 32px;
+}
+
+#page_admin_charInfo .titleApp .appInfo .tr:last-child {
+	height: auto;
+}
+
+#page_admin_charInfo .titleApp .appInfo .tr:last-child > div {
+	float: none;
+}
+
+#page_admin_charInfo .titleApp .appInfo label {
+	width: 180px;
+	float: left;
+	padding-top: 8px;
+}
+
+#page_admin_charInfo .titleApp .appInfo img {
+	padding-top: 4px;
+}
+
+#page_admin_charInfo .titleApp .appInfo .buttons {
+	float: right;
+	width: 220px;
+}
+
+#page_admin_charInfo .titleApp .appInfo .buttons button {
+	float: right;
+}
+
+#page_admin_charInfo .titleApp .appInfo .buttons button:first-child {
+	margin-left: 10px;
+}
+
+#page_admin_charInfo .titleApp .startProcessing, #page_admin_charInfo .titleApp .applyTitle {
+	float: right;
+	width: 100px;
+}
+
+#page_admin_charInfo .note {
+	margin-bottom: 1em;
+}
+
+#page_admin_charInfo .editNote, #page_admin_charInfo .deleteNote {
+	float: right;
+	color: #C00;
+}
+
+#page_admin_charInfo .deleteNote {
+	margin-left: 15px;
+}
+
+#page_admin_charInfo #noteForm textarea, #page_admin_charInfo #logForm textarea {
+	width: 930px;
+	height: 10em;
+	margin-bottom: 1em;
+}
+
+#page_admin_charInfo #logForm select {
+	margin-bottom: .5em;
+	margin-right: 20px;
+}
+
+#page_admin_charInfo #logForm label {
+	display: inline;
+	width: 100px;
+	margin-right: 20px;
+}
+
+#page_admin_charInfo #logForm input {
+	width: 300px;
+}
+
+#page_admin_charInfo #dnrForm label {
+	display: inline;
+}
+
+#page_admin_charInfo #dnrForm input {
+	width: 300px;
+}
+
+#page_admin_charInfo #actionMenu {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	border-top: 1px solid #740;
+	text-align: center;
+	padding: .6em 0;
+	font-size: 1.1em;
+	background: #222;
+}
+
+#page_admin_charInfo #actionMenu > div {
+	width: 940px;
+	margin: 0 auto;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	text-align: left;
+}
+
+#pbuttons {
+	display: inline;
+}
+
+/* ---------------------------------------------------- */
+
+#page_admin_standings table + h3 {
+	margin-top: 2em;
+}
+
+#page_admin_standings .fromName {
+	width: 400px;
+}
+
+#page_admin_standings tr:hover td {
+	background-color: #222;
+}
+
+/* ---------------------------------------------------- */
+
+#page_admin_modAPI form {
+	margin: 2em 2em 1em 2em;
+}
+
+#page_admin_modAPI #apiKey {
+	width: 550px;
+}
+
+/* ---------------------------------------------------- */
+
+#page_admin_applications h3 {
+	background-color: #333;
+	border: 1px solid #999;
+	padding: 3px 8px;
+	margin-bottom: .5em;
+	text-decoration: none;
+}
+
+#page_admin_applications .joinApp .tr {
+	clear: both;
+}
+
+#page_admin_applications .joinApp .tr label {
+	float: left;
+	font-weight: bold;
+}
+
+#page_admin_applications .joinApp .tr div {
+	float: none;
+	margin-left: 210px;
+}
+
+#page_admin_applications .joinApp .longform {
+	margin-top: 1em;
+}
+
+#page_admin_applications .joinApp .longform label {
+	float: none;
+}
+
+#page_admin_applications .joinApp .longform div {
+	margin-top: .5em;
+	margin-left: 0;
+}
+
+/* ---------------------------------------------------- */
+
+#page_admin_editNote textarea, #page_admin_editLog textarea {
+	width: 550px;
+	height: 10em;
+}
+
+#page_admin_apichecker textarea {
+	width: 99%;
+	height: 300px;
+	resize: vertical;
+}
+
+#page_admin_linkaccount #apiKey, #page_admin_apichecker #vCode {
+	width: 550px;
+}
+
+#page_apply #keyID {
+	width: 150px;
+}
+
+#page_apply #vCode {
+	width: 550px;
+}
+
+.boxed, #ipTable, #ipTableHeader {
+	width: 918px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	background-color: black;
+	padding:10px 10px 10px;
+	border: 1px solid #39E;
+}
+
+.gold {
+	background-color: gold;
+	color: red;
+}
+
+.officer {
+  border: 1px solid #39E;
+  background-color: black;
+}
+
+.redboxed {
+    border: 1px solid #aa0000;
+    background-color: #100000;
+}
+
+button.approve {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  text-shadow: 1px 1px black;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+button.defer {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+  text-shadow: 1px 1px black;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+button.delay {
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+  text-shadow: 1px 1px black;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+button.deny {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  text-shadow: 1px 1px black;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+#ipTable, #ipTableHeader {
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid #B40;
+}
+
+#ipTableHeader {
+    margin-top: 2em;
+    max-height: none;
+    overflow-y: auto;
+}
+
+#ipTable .tr .charName, #ipTableHeader .tr .charName {
+    border-left: none;
+    width: 200px;
+}
+
+#ipTable .tr .time, #ipTableHeader .tr .time {
+    width: 200px;
+}
+
+#ipTableHeader .tr .time {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    margin: .5em 0;
+}
+
+#ipTableHeader .tr .charName {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: .5em 0;
+}
