@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('characters', { 
+  var characters = sequelize.define('characters', {
     characterID: {
       type: DataTypes.INTEGER(11),
       allowNull: false
@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    fUserID: {
+    fUserID: { /* Forum User ID */
       type: DataTypes.INTEGER(11),
       allowNull: false
     },
@@ -40,6 +40,31 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
 
       }
+    },
+    instanceMethods: {
+      addLinkedCharacter: function (linkedId) {
+        return sequelize.query("INSERT INTO `linkedcharacters` VALUES (:characterID,:linkedTo)",
+            {
+              replacements: {
+                characterID: this.characterID,
+                linkedTo: linkedId
+              },
+              type: sequelize.QueryTypes.INSERT
+            })
+      },
+      getLinkedCharacters: function () {
+        return sequelize.query("SELECT * FROM `characters` C INNER JOIN" +
+            " `linkedcharacters` L ON C.characterID=L.linkedTo WHERE L.characterID =" +
+            " :characterID ",
+            {
+              replacements: {
+                characterID: this.characterID
+              },
+              model: characters, // FIXME does this work?
+              type: sequelize.QueryTypes.SELECT
+            })
+      }
     }
   });
+  return characters;
 };

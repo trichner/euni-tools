@@ -1,7 +1,7 @@
 body {
 	margin: 20px;
 	background: rgb(22, 71, 97) url(../img/nebula.jpg);
-	font-family: bankgothic_md_btmedium, Arial, sans-serif !important;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif !important; /* bankgothic_md_btmedium */
 	color: white;
 }
 
@@ -58,7 +58,7 @@ img{display:block;}
 }
 
 #footer {
-	font-family: BankGothic,"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 	font-size: 0.7em;
 	font-style: italic;
 	padding: 1em;

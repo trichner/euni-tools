@@ -34,17 +34,19 @@ passport.use(new OAuth2Strategy({
         passReqToCallback: true
     },
     function(req,accessToken, refreshToken, profile, done) {
-        service.createPilot(accessToken)
-            .then(function (pilot) {
-                console.log("Query: " + req.query.state);
-                req.session.verified = true;
-                req.session.pilotId = pilot.id;
-                req.session.verified = true;
-                req.session.cookie.maxAge = 3600000*24*365; // a year
-                done(null, pilot);
-            }, function (err) {
-                done(err, null);
-            })
+        // FIXME
+        console.log("Query: " + req.query.state);
+        //service.createPilot(accessToken)
+        //    .then(function (pilot) {
+        //
+        //        req.session.verified = true;
+        //        req.session.pilotId = pilot.id;
+        //        req.session.verified = true;
+        //        req.session.cookie.maxAge = 3600000*24*365; // a year
+        //        done(null, pilot);
+        //    }, function (err) {
+        //        done(err, null);
+        //    })
     }
 ));
 

@@ -98,7 +98,8 @@ module.exports = {
     getCharacter : function(characterID){
         return client.fetch('eve:CharacterInfo',{characterID:characterID});
     },
-    getCharacterId : getCharacterId
+    getCharacterId : getCharacterId,
+    getCharacterFromAccessToken : getCharacterFromAccessToken
 }
 
 function getCharacterId(accessToken){
@@ -111,4 +112,9 @@ function getCharacterId(accessToken){
             deferred.resolve(res.body.CharacterID);
         });
     return deferred.promise;
+}
+
+function getCharacterFromAccessToken(accessToken){
+    return getCharacterId(accessToken)
+        .then(api.getCharacter)
 }
