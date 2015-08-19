@@ -1,6 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function (sequelize, DataTypes) {
+    var linkedCharacters = sequelize.import(path.join(__dirname, 'linkedCharacters'));
     var characters = sequelize.define('characters', {
         characterID: {
             type: DataTypes.INTEGER(11),
@@ -44,14 +45,10 @@ module.exports = function (sequelize, DataTypes) {
         },
         instanceMethods: {
             addLinkedCharacter: function (linkedId) {
-                return sequelize.query("INSERT INTO `linkedcharacters` VALUES (:characterID,:linkedTo)",
-                    {
-                        replacements: {
-                            characterID: this.characterID,
-                            linkedTo: linkedId
-                        },
-                        type: sequelize.QueryTypes.INSERT
-                    })
+                return linkedCharacters.create({
+                    characterID: this.characterID,
+                    linkedTo: linkedId
+                });
             },
             getLinkedCharacters: function () {
                 return sequelize.query("SELECT * FROM `characters` C INNER JOIN" +

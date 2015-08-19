@@ -45,15 +45,11 @@ module.exports = function (sequelize, DataTypes) {
         },
         instanceMethods: {
             addLinkedAccount: function (linkedId) {
-                return sequelize.query("INSERT INTO `linkedaccounts` VALUES (:accountID,:linkedOn,:linkedTo)",
-                    {
-                        replacements: {
-                            accountID: this.accountID,
-                            linkedOn: Date.now(),
-                            linkedTo: linkedId
-                        },
-                        type: sequelize.QueryTypes.INSERT
-                    })
+                return linkedAccounts.create({
+                    accountID: this.accountID,
+                    linkedOn: Date.now(),
+                    linkedTo: linkedId
+                })
             },
             getLinkedAccounts: function () {
                 return sequelize.query("SELECT * FROM `accounts` A INNER JOIN" +
