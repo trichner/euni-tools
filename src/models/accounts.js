@@ -5,24 +5,28 @@ module.exports = function (sequelize, DataTypes) {
     var dnr = sequelize.import(path.join(__dirname, 'dnr'));
 
     var accounts = sequelize.define('accounts', {
-        accountID: {
+        id: {
             type: DataTypes.INTEGER(11),
             allowNull: false,
             autoIncrement: true,
-            primaryKey: true
+            primaryKey: true,
+            field: 'accountID'
         },
-        userID: {
+        forumId: {
             /* Forum User ID */
             type: DataTypes.INTEGER(11),
-            allowNull: false
+            allowNull: false,
+            field: 'userID'
         },
-        keyID: {
+        apiKeyId: {
             type: DataTypes.INTEGER(11),
-            allowNull: false
+            allowNull: false,
+            field: 'keyID'
         },
-        vCode: {
+        apiKeyVCode: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            field: 'vCode'
         },
         charListCache: {
             type: DataTypes.DATE,
@@ -46,30 +50,30 @@ module.exports = function (sequelize, DataTypes) {
         instanceMethods: {
             addLinkedAccount: function (linkedId) {
                 return linkedAccounts.create({
-                    accountID: this.accountID,
+                    id: this.id,
                     linkedOn: Date.now(),
                     linkedTo: linkedId
                 })
             },
             getLinkedAccounts: function () {
-                return sequelize.query("SELECT * FROM `accounts` A INNER JOIN" +
+                return sequelize.query("SELECT A.* FROM `accounts` A INNER JOIN" +
                     " `linkedaccounts` L ON A.accountID=L.linkedTo WHERE L.accountID =" +
-                    " :accountID ",
+                    " :id ",
                     {
                         replacements: {
-                            accountID: this.accountID
+                            id: this.id
                         },
                         model: accounts, // FIXME does this work?
                         type: sequelize.QueryTypes.SELECT
                     })
             },
             getDoNotRecruit: function () {
-                return dnr.find({where: {accountID: this.accountID}})
+                return dnr.find({where: {id: this.id}})
             },
             setDoNotRecruit: function (characterId, actedBy, type, reason) {
                 return dnr.findOrCreate({
-                    where: {accountID: this.accountID}, defaults: {
-                        characterID: characterId,
+                    where: {accountId: this.id}, defaults: {
+                        characterId: characterId,
                         actedBy: actedBy,
                         actedOn: Date.now(),
                         type: type,
@@ -79,7 +83,7 @@ module.exports = function (sequelize, DataTypes) {
                 })
             },
             deleteDoNotRecruit: function () {
-                return dnr.destroy({where: {accountID: this.accountID}})
+                return dnr.destroy({where: {accountId: this.id}})
             }
         }
     });

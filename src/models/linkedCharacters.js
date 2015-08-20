@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('linkedCharacters', { 
+  var linkedCharacters = sequelize.define('linkedCharacters', {
     characterID: {
       type: DataTypes.INTEGER(11),
       allowNull: false
@@ -18,4 +18,6 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+  linkedCharacters.removeAttribute('id');
+  return linkedCharacters;
 };

@@ -1,24 +1,29 @@
 /* jshint indent: 2 */
-
+var path      = require("path");
 module.exports = function (sequelize, DataTypes) {
     var linkedCharacters = sequelize.import(path.join(__dirname, 'linkedCharacters'));
     var characters = sequelize.define('characters', {
-        characterID: {
+        id: {
             type: DataTypes.INTEGER(11),
-            allowNull: false
+            allowNull: false,
+            primaryKey: true,
+            field: 'characterID'
         },
-        charName: {
+        name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            field: 'charName'
         },
-        fUserID: {
+        forumId: {
             /* Forum User ID */
             type: DataTypes.INTEGER(11),
-            allowNull: false
+            allowNull: false,
+            field: 'fUserID'
         },
-        accountID: {
+        accountId: {
             type: DataTypes.INTEGER(11),
-            allowNull: false
+            allowNull: false,
+            field: 'accountID'
         },
         primaryChar: {
             type: DataTypes.BOOLEAN,
@@ -46,17 +51,19 @@ module.exports = function (sequelize, DataTypes) {
         instanceMethods: {
             addLinkedCharacter: function (linkedId) {
                 return linkedCharacters.create({
-                    characterID: this.characterID,
+                    characterID: this.id,
                     linkedTo: linkedId
                 });
             },
             getLinkedCharacters: function () {
-                return sequelize.query("SELECT * FROM `characters` C INNER JOIN" +
+                return sequelize.query("SELECT C.characterID AS id, charName AS name, fUserID AS forumId," +
+                    " accountID AS accountId,primaryChar,firstPull,latestPull,charSheetCache" +
+                    " FROM `characters` C INNER JOIN" +
                     " `linkedcharacters` L ON C.characterID=L.linkedTo WHERE L.characterID =" +
-                    " :characterID ",
+                    " :id ",
                     {
                         replacements: {
-                            characterID: this.characterID
+                            id: this.id
                         },
                         model: characters, // FIXME does this work?
                         type: sequelize.QueryTypes.SELECT

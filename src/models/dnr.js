@@ -2,13 +2,15 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('dnr', { 
-    accountID: {
+    accountId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'accountID'
     },
-    characterID: {
+    characterId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'characterID'
     },
     actedBy: {
       type: DataTypes.INTEGER(11),
