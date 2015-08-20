@@ -51,7 +51,7 @@ module.exports = function (sequelize, DataTypes) {
         instanceMethods: {
             addLinkedCharacter: function (linkedId) {
                 return linkedCharacters.create({
-                    characterID: this.id,
+                    characterId: this.id,
                     linkedTo: linkedId
                 });
             },

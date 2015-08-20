@@ -50,7 +50,7 @@ module.exports = function (sequelize, DataTypes) {
         instanceMethods: {
             addLinkedAccount: function (linkedId) {
                 return linkedAccounts.create({
-                    id: this.id,
+                    accountId: this.id,
                     linkedOn: Date.now(),
                     linkedTo: linkedId
                 })

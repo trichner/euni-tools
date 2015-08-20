@@ -53,14 +53,14 @@
   {
     "model":"linkedCharacters",
     "data": {
-      "characterID":698922015,
+      "characterId":698922015,
       "linkedTo":698922016
     }
   },
   {
     "model":"linkedCharacters",
     "data": {
-      "characterID":698922016,
+      "characterId":698922016,
       "linkedTo":698922015
     }
   }

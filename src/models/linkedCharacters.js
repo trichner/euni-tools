@@ -2,9 +2,10 @@
 
 module.exports = function(sequelize, DataTypes) {
   var linkedCharacters = sequelize.define('linkedCharacters', {
-    characterID: {
+    characterId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'characterID'
     },
     linkedTo: {
       type: DataTypes.INTEGER(11),

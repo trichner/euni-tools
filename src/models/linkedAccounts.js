@@ -2,10 +2,11 @@
 
 module.exports = function(sequelize, DataTypes) {
   var LinkedAccounts = sequelize.define('linkedAccounts', {
-    accountID: {
+    accountId: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      field: 'accountID'
     },
     linkedOn: {
       type: DataTypes.DATE,
