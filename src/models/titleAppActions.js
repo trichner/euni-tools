@@ -2,13 +2,15 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('titleAppActions', { 
-    actionID: {
+    id: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'actionID'
     },
-    appID: {
+    appId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'appID'
     },
     actedBy: {
       type: DataTypes.INTEGER(11),

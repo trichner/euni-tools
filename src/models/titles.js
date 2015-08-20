@@ -2,9 +2,10 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('titles', { 
-    characterID: {
+    characterId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'characterID'
     },
     interviewed: {
       type: DataTypes.BOOLEAN,
@@ -34,17 +35,20 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: false
     },
-    returning_freshman: {
+    returningFreshman: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      field: 'returning_freshman'
     },
-    returning_sophomore: {
+    returningSophomore: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      field: 'returning_sophomore'
     },
-    returning_graduate: {
+    returningGraduate: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: false,
+      field: 'returning_graduate'
     }
   }, {
     timestamps: false,

@@ -2,13 +2,15 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('standings', { 
-    standingID: {
+    standingId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'standingID'
     },
-    entityID: {
+    entityId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'entityID'
     },
     standing: {
       type: DataTypes.DECIMAL(4,2),

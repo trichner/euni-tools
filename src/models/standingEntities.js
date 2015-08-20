@@ -2,9 +2,12 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('standingEntities', { 
-    entityID: {
+    id: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      field: 'entityID'
     },
     type: {
       type: DataTypes.STRING,

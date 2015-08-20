@@ -2,9 +2,10 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('joinQueue', { 
-    characterID: {
+    characterId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'characterID'
     },
     joined: {
       type: DataTypes.DATE,

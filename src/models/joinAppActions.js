@@ -2,13 +2,17 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('joinAppActions', { 
-    actionID: {
+    id: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      field: 'actionID'
     },
-    appID: {
+    appId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'appID'
     },
     actedBy: {
       type: DataTypes.INTEGER(11),

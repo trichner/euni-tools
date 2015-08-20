@@ -2,17 +2,22 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('notes', { 
-    noteID: {
+    id: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      field: 'noteID'
     },
-    authorID: {
+    authorId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'authorID'
     },
-    characterID: {
+    characterId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'characterID'
     },
     postedOn: {
       type: DataTypes.DATE,

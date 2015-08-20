@@ -2,17 +2,22 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('standingPulls', { 
-    standingID: {
+    id: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      field: 'standingID'
     },
-    pullID: {
+    pullId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'pullID'
     },
-    characterID: {
+    characterId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'characterID'
     },
     standings: {
       type: DataTypes.TEXT,

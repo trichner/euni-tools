@@ -2,13 +2,17 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('joinApps', { 
-    appID: {
+    id: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      field: 'appID'
     },
-    characterID: {
+    characterId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'characterID'
     },
     submitted: {
       type: DataTypes.BOOLEAN,
@@ -42,9 +46,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: false
     },
-    detailsID: {
+    detailsId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'detailsID'
     }
   }, {
     timestamps: false,

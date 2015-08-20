@@ -2,17 +2,22 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('logs', { 
-    logID: {
+    id: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      field: 'logID'
     },
-    converserID: {
+    authorId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'converserID'
     },
-    converseeID: {
+    characterId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'converseeID'
     },
     hadOn: {
       type: DataTypes.DATE,

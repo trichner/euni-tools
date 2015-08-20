@@ -2,13 +2,17 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('apiPulls_skills', { 
-    pullID: {
+    id: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      field: 'pullID'
     },
-    skillID: {
+    skillId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'skillID'
     },
     sp: {
       type: DataTypes.INTEGER(11),

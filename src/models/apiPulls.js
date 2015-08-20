@@ -2,17 +2,21 @@
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('apiPulls', { 
-    pullID: {
+    id: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      field:'pullID'
     },
     pulledBy: {
       type: DataTypes.INTEGER(11),
       allowNull: false
     },
-    characterID: {
+    characterId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'characterID'
     },
     pullDate: {
       type: DataTypes.DATE,
@@ -34,21 +38,24 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    corpName: {
+    corporationName: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      field: 'corpName'
     },
-    corpID: {
+    corporationId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'corpID'
     },
     allianceName: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    allianceID: {
+    allianceId: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      field: 'allianceID'
     },
     cloneName: {
       type: DataTypes.STRING,
