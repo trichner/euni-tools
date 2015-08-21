@@ -1,0 +1,1 @@
+INSERT INTO `characters` (`characterID`,`charName`,`fUserID`,`accountID`,`primaryChar`,`firstPull`,`latestPull`,`charSheetCache`) VALUES (698922015,'Thomion',48564,35361,0,'2014-06-16 23:39:28','2015-07-12 22:26:42','2015-07-12 23:04:08');
