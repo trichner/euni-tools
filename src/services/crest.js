@@ -1,5 +1,7 @@
 /**
  * Created by Thomas on 16.04.2015.
+ *
+ * http://wiki.eve-id.net/APIv2_Page_Index
  */
 var neow = require('neow');
 var Q    = require('q');
