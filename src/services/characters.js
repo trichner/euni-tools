@@ -33,7 +33,6 @@ function getCharacterById(characterId){
 }
 
 function mapCharacter(character, apiPull,apiCharacter){
-    console.log(JSON.stringify(apiCharacter))
     apiPull = apiPull || {};
     return {
         id: String(character.id),
