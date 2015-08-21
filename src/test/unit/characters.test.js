@@ -21,6 +21,7 @@ describe('models/characters', function () {
         })
     });
 
+    //=== Model Tests
     describe('create', function () {
         it('creates a character', function () {
             return this.models.characters.create({
@@ -38,7 +39,7 @@ describe('models/characters', function () {
         });
     });
 
-
+    //=== Service Tests
     var expectedCharacter = {
         id: "698922015",
         name: "Thomion",

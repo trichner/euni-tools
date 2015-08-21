@@ -7,7 +7,7 @@ var modelsToTest = ['characters','accounts','dnr','apiPulls','apiPulls_skills','
   'permissions','standingEntities','standingPulls','standings','titleAppActions','titleApps','titleQueue','titles'];
 
 describe('models/index', function () {
-
+  //=== tests if the models were loaded
   modelsToTest.forEach(function (model) {
     it('returns the ' + model + ' model', function () {
       var models = require('../../models');
