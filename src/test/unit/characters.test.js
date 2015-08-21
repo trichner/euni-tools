@@ -1,16 +1,29 @@
 'use strict';
 
 var expect = require('expect.js');
+var sequelizeFixtures = require('sequelize-fixtures');
+var Q = require('q');
+var path = require("path");
+
+var charactersService = require('../../services/characters')
 
 describe('models/characters', function () {
     beforeEach(function () {
-        this.characters = require('../../models').characters;
-        return this.characters.destroy({truncate: true})
+        this.models = require('../../models');
+        var models = this.models;
+        var promises = Object.keys(this.models).filter(function (model) {
+            return ['Sequelize','sequelize'].indexOf(model)<0;
+        }).map(function (model) {
+            return models[model].destroy({truncate: true});
+        });
+        return Q.all(promises).then(function () {
+            return sequelizeFixtures.loadFile(path.join(__dirname, "../fixtures/thomion.json"), models);
+        })
     });
 
     describe('create', function () {
         it('creates a character', function () {
-            return this.characters.create({
+            return this.models.characters.create({
                 name: 'johndoe sting',
                 id: 42,
                 forumId: 1,
@@ -22,6 +35,27 @@ describe('models/characters', function () {
             }).bind(this).then(function (characters) {
                 expect(characters.name).to.equal('johndoe sting');
             });
+        });
+    });
+
+
+    var expectedCharacter = {
+        id: "698922015",
+        name: "Thomion",
+        corporation: {
+            id: "917701062",
+            name: "EVE University"
+        },
+        alliance: {
+            id: "937872513",
+            name: "Ivy League"
+        },
+        securityStatus: "4.16920499697278"
+    };
+
+    describe('get', function () {
+        it('finds a character', function () {
+            return charactersService.getCharacterById(698922015).should.become(expectedCharacter);
         });
     });
 });

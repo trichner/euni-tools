@@ -98,6 +98,9 @@ module.exports = {
     getCharacter : function(characterID){
         return client.fetch('eve:CharacterInfo',{characterID:characterID});
     },
+    getCharacterSheet : function(characterID){
+        return client.fetch('char:CharacterSheet',{characterID:characterID});
+    },
     getCharacterId : getCharacterId,
     getCharacterFromAccessToken : getCharacterFromAccessToken
 }

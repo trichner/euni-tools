@@ -63,5 +63,31 @@
       "characterId":698922016,
       "linkedTo":698922015
     }
+  },
+  {
+    "model":"apiPulls",
+    "data": {
+      "id":1,
+      "pulledBy":698922016,
+      "characterId":698922015,
+      "pullDate": "2015-08-12 23:04:08",
+      "name": "Thomion",
+      "DoB": "2012-08-12 23:04:08",
+      "race": "Caldari",
+      "gender": "m",
+      "corporationName":"EVE University",
+      "corporationId":"917701062",
+      "allianceName":"Ivy League",
+      "allianceId":"937872513",
+      "cloneName":"",
+      "cloneSP":0,
+      "balance":50000000.00,
+      "intelligence": 6,
+      "memory": 4,
+      "charisma": 7,
+      "perception": 12,
+      "willpower": 10,
+      "totalSP": 32000000
+    }
   }
 ]
