@@ -25,7 +25,6 @@ describe('models/linkedCharacters', function () {
             return character.getLinkedCharacters();
         })
             .then(function (linkedCharacters) {
-                console.log(JSON.stringify(linkedCharacters))
                 var linkedCharactersIds = linkedCharacters.map(function (char) {
                     return char.id;
                 })
