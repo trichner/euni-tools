@@ -4,11 +4,26 @@ var models  = require('../models/index');
 var sanitizer = require('sanitizer');
 
 var crest = require('./crest');
+var accountsService = require('./accounts')
 
 
 module.exports = {
-    getCharacterById : getCharacterById
+    getCharacterById : getCharacterById,
+    getAccountByCharacterId : getAccountByCharacterId
 };
+
+var account = {
+    id: 1234,
+    apiKey: 1234,
+    apiVCode: "43523452354",
+    updatedAt: Date.now()
+}
+function getAccountByCharacterId(characterId){
+    return models.characters.find({where: {id: characterId}})
+        .then(function (character) {
+            return accountsService.getAccountById(character.accountId);
+        })
+}
 
 var character = {
     id: "698922015",
@@ -45,7 +60,7 @@ function mapCharacter(character, apiPull,apiCharacter){
             id: String(apiPull.allianceId || 0),
             name: apiPull.allianceName || ''
         },
-        securityStatus: "4.16920499697278" || apiCharacter.securityStatus.content // FIXME not in DB!
+        securityStatus: "0" // apiCharacter.securityStatus.content // FIXME not in DB!
     }
 }
 

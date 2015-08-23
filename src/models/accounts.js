@@ -68,7 +68,7 @@ module.exports = function (sequelize, DataTypes) {
                     })
             },
             getDoNotRecruit: function () {
-                return dnr.find({where: {id: this.id}})
+                return dnr.find({where: {accountId: this.id}})
             },
             setDoNotRecruit: function (characterId, actedBy, type, reason) {
                 return dnr.findOrCreate({

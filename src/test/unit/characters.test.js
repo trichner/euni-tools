@@ -51,12 +51,23 @@ describe('models/characters', function () {
             id: "937872513",
             name: "Ivy League"
         },
-        securityStatus: "4.16920499697278"
+        securityStatus: "0"
     };
 
     describe('get', function () {
         it('finds a character', function () {
             return charactersService.getCharacterById(698922015).should.become(expectedCharacter);
+        });
+    });
+
+    var expectedAccount = {
+        id: "35361",
+        apiKeyId: "1337"
+    };
+
+    describe('get account', function () {
+        it('finds the account', function () {
+            return charactersService.getAccountByCharacterId(698922015).should.become(expectedAccount);
         });
     });
 });
