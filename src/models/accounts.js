@@ -41,6 +41,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
         }
     }, {
+        tableName: 'accounts',
         timestamps: false,
         classMethods: {
             associate: function (models) {

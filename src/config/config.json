@@ -6,7 +6,8 @@
     "host": "localhost",
     "dialect": "mysql",
     "authRequired" : false,
-    "eveSsoCallback": "http://localhost:3000/euni-tools/api/auth/callback"
+    "eveSsoCallback": "http://localhost:3000/euni-tools/api/auth/callback",
+    "logging" : false
   },
   "test": {
     "username": "root",
@@ -21,6 +22,7 @@
     "database": "tools",
     "host": "localhost",
     "dialect": "mysql",
-    "eveSsoCallback" :  "https://k42.ch/euni-tools/api/auth/callback"
+    "eveSsoCallback" :  "https://k42.ch/euni-tools/api/auth/callback",
+    "logging" : false
   }
 }

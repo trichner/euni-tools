@@ -1,5 +1,5 @@
 /* jshint indent: 2 */
-var path      = require("path");
+var path = require("path");
 module.exports = function (sequelize, DataTypes) {
     var linkedCharacters = sequelize.import(path.join(__dirname, 'linkedCharacters'));
     var characters = sequelize.define('characters', {
@@ -42,6 +42,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     }, {
+        tableName: 'characters',
         timestamps: false,
         classMethods: {
             associate: function (models) {
