@@ -5,26 +5,6 @@ var noteService = require('./../services/notes');
 var router = require('express-promise-router')();
 var sanitizer = require('sanitizer');
 
-var character = {
-    id: "698922015",
-    name: "Thomion",
-    corporation: {
-        id: "917701062",
-        name: "EVE University"
-    },
-    alliance: {
-        id: "937872513",
-        name: "Ivy League"
-    }
-}
-
-var account = {
-    id: 1234,
-    apiKey: 1234,
-    apiVCode: "43523452354",
-    updatedAt: Date.now()
-}
-
 var characterDetails = {
     skillpoints: 31000000,
     walletBalance: 333000000,
@@ -96,17 +76,6 @@ var characterApiPulls = [
         pulledBy: "698922015",
         characterID: "698922015",
         pulledAt: new Date('1.2.2015')
-    }
-];
-
-var linkedCharacters = [
-    {
-        id: 13251,
-        name: "Nib Athmi"
-    },
-    {
-        id: 43332,
-        name: "Lea Aluminium"
     }
 ];
 
