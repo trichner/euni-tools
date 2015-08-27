@@ -22,21 +22,4 @@ describe('characters linked routes', function () {
         })
     });
 
-    //it('loads correctly', function (done) {
-    //  request(app).get('/character/1').expect(200, done);
-    //});
-
-    //it('lists a user if there is one', function (done) {
-    //    this.models.characters.find({where: {characterID: 698922015}}).then(function (character) {
-    //        request(app).get('/').expect(/johndoe/, done);
-    //    })
-    //});
-
-    //it('lists the tickets for the user if available', function (done) {
-    //    this.models.User.create({username: 'johndoe'}).bind(this).then(function (user) {
-    //        return this.models.Task.create({title: 'johndoe task', UserId: user.id});
-    //    }).then(function () {
-    //        request(app).get('/').expect(/johndoe task/, done);
-    //    });
-    //});
 });
