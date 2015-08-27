@@ -53,7 +53,7 @@ describe('models/characters', function () {
         }
     };
 
-    describe('get', function () {
+    describe('get character', function () {
         it('finds a character', function () {
             return charactersService.getCharacterById(698922015).should.become(expectedCharacter);
         });
