@@ -1,12 +1,12 @@
 var express = require('express');
 var path = require('path');
-var logger = require('morgan');
+var accesslog = require('morgan');
 
 var api = require('./api');
 var app = express();
 
 // uncomment after placing your favicon in /public
-app.use(logger('dev'));
+app.use(accesslog('dev'));
 
 // static content
 app.use('/img', express.static(path.resolve(__dirname, '../../public/img'),{ maxAge: 31557600000 }));
@@ -28,6 +28,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
+    console.error(err.stack);
     res.status(err.status || 500);
     res.send({
       message: err.message,

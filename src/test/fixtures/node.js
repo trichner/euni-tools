@@ -16,3 +16,5 @@ global.fulfilledPromise = Q.resolve;
 global.rejectedPromise = Q.reject;
 global.defer = Q.defer;
 global.waitAll = Q.all;
+
+process.env.NODE_ENV = 'development';

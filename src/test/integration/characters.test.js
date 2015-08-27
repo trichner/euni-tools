@@ -1,14 +1,14 @@
 'use strict';
 
-var app = require('../../routes/root')
-var Q = require('q');
-var expect = require('expect.js');
+var app     = require('../../routes/root')
+var Q       = require('q');
+var expect  = require('expect.js');
 var request = require('supertest');
-var path      = require("path");
+var path    = require("path");
 
 var sequelizeFixtures = require('sequelize-fixtures');
 
-describe('characters linked routes', function () {
+describe('characters routes', function () {
     beforeEach(function () {
         this.models = require('../../models');
         var models = this.models;
@@ -22,9 +22,32 @@ describe('characters linked routes', function () {
         })
     });
 
-    //it('loads correctly', function (done) {
-    //  request(app).get('/character/1').expect(200, done);
-    //});
+    var charIdThomion = 698922015;
+    //=== Service Tests
+    var expectedCharacter = {
+        id: "698922015",
+        name: "Thomion",
+        corporation: {
+            id: "917701062",
+            name: "EVE University"
+        },
+        alliance: {
+            id: "937872513",
+            name: "Ivy League"
+        },
+        securityStatus: "0"
+    };
+
+    it('loads correctly', function (done) {
+        this.timeout(10000000);
+      request(app).get('/api/characters/' + charIdThomion + '.json')
+          .expect('Content-Type', /json/)
+          .expect(function (res) {
+              expect(res.body).to.eql(expectedCharacter);
+          })
+          .expect(200, done);
+    });
+
 
     //it('lists a user if there is one', function (done) {
     //    this.models.characters.find({where: {characterID: 698922015}}).then(function (character) {

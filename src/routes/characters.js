@@ -1,5 +1,5 @@
 
-var service = require('./../services/service');
+var characterService = require('./../services/characters');
 var router = require('express').Router();
 var sanitizer = require('sanitizer');
 
@@ -208,7 +208,14 @@ var standings = {
 }
 
 router.get('/:id.json', function (req, res, next) {
-    return res.json(character);
+    var characterId = req.params.id;
+    return characterService.getCharacterById(characterId)
+        .then(function (character) {
+            res.json(character);
+        })
+        .catch(function (e) {
+            next(new Error(e));
+        })
 });
 
 router.get('/:id/employment-history.json', function (req, res, next) {
