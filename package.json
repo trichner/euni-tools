@@ -32,6 +32,7 @@
     "debug": "~2.1.1",
     "eve-header": "trichner/eve-header",
     "express": "~4.12.2",
+    "express-promise-router": "0.0.9",
     "express-session": "~1.10.0",
     "jade": "~1.9.2",
     "morgan": "~1.5.1",

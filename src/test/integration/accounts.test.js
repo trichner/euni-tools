@@ -37,6 +37,24 @@ describe('accounts routes', function () {
           .expect(200, done);
     });
 
+    var expectedDNR = {
+        "accountId" : String(35361),
+        "characterId" : String(698922017),
+        "actedBy" : String(698922015),
+        "actedOn" : "2014-08-12T21:04:08.000Z",
+        "type" : "DNR",
+        "reason" : "Dirty spai."
+    }
+
+    it('loads dnr correctly', function (done) {
+        request(app).get('/api/accounts/35361/dnr.json')
+            .expect('Content-Type', /json/)
+            .expect(function (res) {
+                expect(res.body).to.eql(expectedDNR);
+            })
+            .expect(200, done);
+    });
+
 
     //it('lists a user if there is one', function (done) {
     //    this.models.characters.find({where: {characterID: 698922015}}).then(function (character) {

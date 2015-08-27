@@ -1,6 +1,6 @@
 
 var characterService = require('./../services/characters');
-var router = require('express').Router();
+var router = require('express-promise-router')();
 var sanitizer = require('sanitizer');
 
 var character = {
@@ -210,12 +210,7 @@ var standings = {
 router.get('/:id.json', function (req, res, next) {
     var characterId = req.params.id;
     return characterService.getCharacterById(characterId)
-        .then(function (character) {
-            res.json(character);
-        })
-        .catch(function (e) {
-            next(e);
-        })
+        .then(res.json.bind(res))
 });
 
 router.get('/:id/employment-history.json', function (req, res, next) {
@@ -249,12 +244,7 @@ router.get('/:id/standings.json', function (req, res, next) {
 router.get('/:id/account.json', function (req, res, next) {
     var characterId = req.params.id;
     return characterService.getAccountByCharacterId(characterId)
-        .then(function (account) {
-            res.json(account);
-        })
-        .catch(function (e) {
-            next(e);
-        })
+        .then(res.json.bind(res))
 });
 
 router.get('/:id/titles.json', function (req, res, next) {
