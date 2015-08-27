@@ -40,8 +40,7 @@ function mapCharacter(character, apiPull,apiCharacter){
         alliance: {
             id: String(apiPull.allianceId || 0),
             name: apiPull.allianceName || ''
-        },
-        securityStatus: "0" // apiCharacter.securityStatus.content // FIXME not in DB!
+        }
     }
 }
 

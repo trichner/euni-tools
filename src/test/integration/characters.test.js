@@ -34,8 +34,7 @@ describe('characters routes', function () {
         alliance: {
             id: "937872513",
             name: "Ivy League"
-        },
-        securityStatus: "0"
+        }
     };
 
     it('loads correctly', function (done) {

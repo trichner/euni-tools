@@ -50,8 +50,7 @@ describe('models/characters', function () {
         alliance: {
             id: "937872513",
             name: "Ivy League"
-        },
-        securityStatus: "0"
+        }
     };
 
     describe('get', function () {

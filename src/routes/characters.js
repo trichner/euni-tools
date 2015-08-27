@@ -13,8 +13,7 @@ var character = {
     alliance: {
         id: "937872513",
         name: "Ivy League"
-    },
-    securityStatus: "4.43519929851504"
+    }
 }
 
 var account = {
@@ -29,7 +28,8 @@ var characterDetails = {
     walletBalance: 333000000,
     dateOfBirth: "2010-06-11 18:41:00",
     logonMinutes: 60*555,
-    logonCount: 212
+    logonCount: 212,
+    securityStatus: "4.43519929851504"
 }
 
 var employmentHistory = [
