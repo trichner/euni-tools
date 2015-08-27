@@ -1,3 +1,5 @@
+
+
 # Quick Start
 
 1. Checkout the Repository
@@ -14,6 +16,11 @@ NODE_ENV=production`
   2. check if `mysql -u euni-tools -p` works with password `1234`
 2. install dependencies via `npm install`
 3. run `npm test` and assert all tests pass
+
+# Requirements
+- `mysql`
+- `node`
+- `npm`
 
 # Link Collection
 
