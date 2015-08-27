@@ -6,8 +6,20 @@ var sanitizer = require('sanitizer');
 module.exports = {
     getLogById : getLogById,
     getLogsByAuthorId : getLogsByAuthorId,
-    getLogsByCharacterId : getLogsByCharacterId
+    getLogsByCharacterId : getLogsByCharacterId,
+    createLog : createLog
 };
+
+function createLog(authorId,characterId,description,type,log){
+    return models.logs.create({
+        authorId: authorId,
+        characterId: characterId,
+        description: description,
+        type: type,
+        log: log,
+        createdAt: Date.now()
+    }).then(mapLog)
+}
 
 function getLogById(logId){
     return models.logs.findOne({where: {id: logId}})
@@ -33,7 +45,7 @@ function mapLog(log){
         id: String(log.id),
         authorId: String(log.authorId),
         characterId: String(log.characterId),
-        createdAt: log.hadOn,
+        createdAt: log.createdAt,
         log: log.log,
         description: log.description,
         type: log.type

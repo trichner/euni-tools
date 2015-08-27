@@ -19,9 +19,10 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             field: 'converseeID'
         },
-        hadOn: {
+        createdAt: {
             type: DataTypes.DATE,
-            allowNull: false
+            allowNull: false,
+            field: 'hadOn'
         },
         log: {
             type: DataTypes.TEXT,

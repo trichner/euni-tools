@@ -33,7 +33,7 @@ function mapNote(note){
         id: String(note.id),
         authorId: String(note.authorId),
         characterId: String(note.characterId),
-        createdAt: note.postedOn,
+        createdAt: note.createdAt,
         note: note.note,
         type: note.type
     }

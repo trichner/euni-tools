@@ -19,9 +19,10 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             field: 'characterID'
         },
-        postedOn: {
+        createdAt: {
             type: DataTypes.DATE,
-            allowNull: false
+            allowNull: false,
+            field: 'postedOn'
         },
         type: {
             type: DataTypes.STRING,

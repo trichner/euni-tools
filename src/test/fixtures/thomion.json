@@ -122,7 +122,7 @@
       "id": 1,
       "authorId": 698922016,
       "characterId" : 698922015,
-      "hadOn" : "2015-08-12 23:04:08",
+      "createdAt" : "2015-08-12 23:04:08",
       "log" : "This could be veeery long :)",
       "description" : "Interview Thomion",
       "type" : "Interview"
@@ -134,7 +134,7 @@
       "id": 1,
       "authorId": 698922016,
       "characterId" : 698922015,
-      "postedOn" : "2015-08-11 23:04:08",
+      "createdAt" : "2015-08-11 23:04:08",
       "note" : "I like :)",
       "type" : "Note"
     }
