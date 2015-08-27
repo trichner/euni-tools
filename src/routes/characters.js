@@ -198,13 +198,11 @@ router.get('/:id/linked.json', function (req, res, next) {
 router.post('/:id/notes.json', function (req, res, next) {
     var characterId = req.params.id;
     var actingId = req.session.characterId;
-    var note = req.body.note;
-    var type = req.body.type;
     // sanitize!
-    note = sanitizer.sanitize(note);
-    type = sanitizer.sanitize(type);
-    console.log(note);
-    return res.status(204).end();
+    var note = sanitizer.sanitize(req.body.note);
+    var type = sanitizer.sanitize(req.body.type);
+    return noteService.createNote(actingId, characterId, type, note)
+        .then(res.json.bind(res))
 });
 
 router.post('/:id/logs.json', function (req, res, next) {
