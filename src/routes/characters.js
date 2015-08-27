@@ -1,4 +1,3 @@
-
 var characterService = require('./../services/characters');
 var logService = require('./../services/logs');
 var noteService = require('./../services/notes');
@@ -9,7 +8,7 @@ var characterDetails = {
     skillpoints: 31000000,
     walletBalance: 333000000,
     dateOfBirth: "2010-06-11 18:41:00",
-    logonMinutes: 60*555,
+    logonMinutes: 60 * 555,
     logonCount: 212,
     securityStatus: "4.43519929851504"
 }
@@ -100,46 +99,46 @@ var characterActions = [
 
 var standings = {
     agents: [
-            {
-                id: 3009841,
-                name: "Pausent Ansin",
-                standing: 0.35
-            },
-            {
-                id: 3009846,
-                name: "Charie Octienne",
-                standing: 0.1
-            }
-        ],
+        {
+            id: 3009841,
+            name: "Pausent Ansin",
+            standing: 0.35
+        },
+        {
+            id: 3009846,
+            name: "Charie Octienne",
+            standing: 0.1
+        }
+    ],
     corporations: [
-            {
-                id: 1000061,
-                name: "Freedom Extension",
-                standing: 0.42
-            },
-            {
-                id: 1000094,
-                name: "TransStellar Shipping",
-                standing: 0.02
-            },
-            {
-                id: 1000064,
-                name: "Carthum Conglomerate",
-                standing: 2.3
-            }
-        ],
+        {
+            id: 1000061,
+            name: "Freedom Extension",
+            standing: 0.42
+        },
+        {
+            id: 1000094,
+            name: "TransStellar Shipping",
+            standing: 0.02
+        },
+        {
+            id: 1000064,
+            name: "Carthum Conglomerate",
+            standing: 2.3
+        }
+    ],
     factions: [
-            {
+        {
             id: 500003,
             name: "Amarr Empire",
             standing: 1.1
-            },
-            {
+        },
+        {
             id: 500020,
             name: "Serpentis",
             standing: -3.2
-            }
-        ]
+        }
+    ]
 }
 
 router.get('/:id.json', function (req, res, next) {
@@ -187,7 +186,7 @@ router.get('/:id/account.json', function (req, res, next) {
 });
 
 router.get('/:id/titles.json', function (req, res, next) {
-    return res.json({error:"NOT IMPLEMENTED"})
+    return res.json({error: "NOT IMPLEMENTED"})
 });
 
 router.get('/:id/linked.json', function (req, res, next) {
@@ -211,13 +210,13 @@ router.post('/:id/notes.json', function (req, res, next) {
 router.post('/:id/logs.json', function (req, res, next) {
     var characterId = req.params.id;
     var actingId = req.session.characterId;
-    var log = req.body.log;
-    var type = req.body.type;
+
     // sanitize!
-    log = sanitizer.sanitize(log);
-    type = sanitizer.sanitize(type);
-    console.log(log);
-    return res.status(204).end();
+    var log = sanitizer.sanitize(req.body.log);
+    var type = sanitizer.sanitize(req.body.type);
+    var description = sanitizer.sanitize(req.body.description);
+    return logService.createLog(actingId, characterId, description, type, log)
+        .then(res.json.bind(res))
 });
 
 module.exports = router;

@@ -6,8 +6,19 @@ var sanitizer = require('sanitizer');
 module.exports = {
     getNoteById : getNoteById,
     getNotesByAuthorId : getNotesByAuthorId,
-    getNotesByCharacterId : getNotesByCharacterId
+    getNotesByCharacterId : getNotesByCharacterId,
+    createNote : createNote
 };
+
+function createNote(authorId,characterId,type,note){
+    return models.notes.create({
+        authorId: authorId,
+        characterId: characterId,
+        type: type,
+        note: note,
+        createdAt: Date.now()
+    }).then(mapNote)
+}
 
 function getNoteById(noteId){
     return models.notes.findOne({where: {id: noteId}})
