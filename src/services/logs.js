@@ -30,6 +30,7 @@ function mapLogs(logs){
 
 function mapLog(log){
     return {
+        id: String(log.id),
         authorId: String(log.authorId),
         characterId: String(log.characterId),
         createdAt: log.hadOn,
