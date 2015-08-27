@@ -95,6 +95,8 @@ describe('routes/characters', function () {
             .expect(200, done);
     });
 
+
+    // TODO: this is not the complete implementation, e.g. logonMinutes is missing
     var expectedDetails = {"characterId":698922015,"skillpoints":32000000,"walletBalance":50000000,
         "dateOfBirth":"2012-08-12T21:04:08.000Z","logonMinutes":0,"logonCount":0,"securityStatus":0}
 
