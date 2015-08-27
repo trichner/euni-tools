@@ -8,7 +8,7 @@ var path    = require("path");
 
 var sequelizeFixtures = require('sequelize-fixtures');
 
-describe('characters routes', function () {
+describe('routes/characters', function () {
     beforeEach(function () {
         this.models = require('../../models');
         var models = this.models;
