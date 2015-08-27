@@ -60,4 +60,16 @@ describe('characters routes', function () {
             })
             .expect(200, done);
     });
+
+    var expectedLogs = [{"authorId":"698922016","characterId":"698922015","createdAt":"2015-08-12T21:04:08.000Z",
+        "log":"This could be veeery long :)","description":"Interview Thomion","type":"Interview"}];
+
+    it('loads logs correctly', function (done) {
+        request(app).get('/api/characters/' + charIdThomion + '/logs.json')
+            .expect('Content-Type', /json/)
+            .expect(function (res) {
+                expect(res.body).to.eql(expectedLogs);
+            })
+            .expect(200, done);
+    });
 });

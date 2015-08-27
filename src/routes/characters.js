@@ -1,5 +1,6 @@
 
 var characterService = require('./../services/characters');
+var logService = require('./../services/logs');
 var router = require('express-promise-router')();
 var sanitizer = require('sanitizer');
 
@@ -226,7 +227,9 @@ router.get('/:id/notes.json', function (req, res, next) {
 });
 
 router.get('/:id/logs.json', function (req, res, next) {
-    return res.json(characterLogs);
+    var characterId = req.params.id;
+    return logService.getLogsByCharacterId(characterId)
+        .then(res.json.bind(res))
 });
 
 router.get('/:id/details.json', function (req, res, next) {

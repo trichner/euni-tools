@@ -32,5 +32,4 @@ describe('models/accounts', function () {
         });
     });
 
-
 });

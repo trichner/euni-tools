@@ -115,5 +115,17 @@
       "reason" : "Dirty spai.",
       "standing" : 0
     }
+  },
+  {
+    "model": "logs",
+    "data": {
+      "id": 1,
+      "authorId": 698922016,
+      "characterId" : 698922015,
+      "hadOn" : "2015-08-12 23:04:08",
+      "log" : "This could be veeery long :)",
+      "description" : "Interview Thomion",
+      "type" : "Interview"
+    }
   }
 ]

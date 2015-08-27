@@ -27,9 +27,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: false
         },
-        desc: {
+        description: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            field: 'desc'
         },
         type: {
             type: DataTypes.STRING,
