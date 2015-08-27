@@ -3,7 +3,6 @@ var Q = require('q');
 var models  = require('../models/index');
 var sanitizer = require('sanitizer');
 
-var crest = require('./crest');
 var accountsService = require('./accounts')
 
 
@@ -34,12 +33,11 @@ function getCharacterById(characterId){
     var promises = [];
     promises.push(models.characters.find({where: {id: characterId}}));
     promises.push(models.apiPulls.findOne({where: {characterId: characterId},order: [['pullDate','DESC']]}));
-    promises.push(crest.getCharacter(characterId));
 
     return Q.all(promises).spread(mapCharacter)
 }
 
-function mapCharacter(character, apiPull,apiCharacter){
+function mapCharacter(character, apiPull){
     apiPull = apiPull || {};
     return {
         id: String(character.id),
