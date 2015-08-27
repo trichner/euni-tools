@@ -127,5 +127,16 @@
       "description" : "Interview Thomion",
       "type" : "Interview"
     }
+  },
+  {
+    "model": "notes",
+    "data": {
+      "id": 1,
+      "authorId": 698922016,
+      "characterId" : 698922015,
+      "postedOn" : "2015-08-11 23:04:08",
+      "note" : "I like :)",
+      "type" : "Note"
+    }
   }
 ]

@@ -1,6 +1,7 @@
 
 var characterService = require('./../services/characters');
 var logService = require('./../services/logs');
+var noteService = require('./../services/notes');
 var router = require('express-promise-router')();
 var sanitizer = require('sanitizer');
 
@@ -223,7 +224,9 @@ router.get('/:id/api-pulls.json', function (req, res, next) {
 });
 
 router.get('/:id/notes.json', function (req, res, next) {
-    return res.json(characterNotes);
+    var characterId = req.params.id;
+    return noteService.getNotesByCharacterId(characterId)
+        .then(res.json.bind(res))
 });
 
 router.get('/:id/logs.json', function (req, res, next) {
