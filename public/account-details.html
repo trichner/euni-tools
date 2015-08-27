@@ -155,7 +155,7 @@
 			<div class="actions">
 				<div class="box-title"><b>Notes</b></div>
 				<div class="bottom-border" ng-repeat="note in notes">
-					<div>{{note.createdAt | date:'dd.MM.yy'}} - {{note.type}} by {{note.authorID}}</div>
+					<div>{{note.createdAt | date:'dd.MM.yy'}} - {{note.type}} by {{note.authorId}}</div>
 					<div>{{note.note}}</div>
 				</div>
 				<textarea class="text-box" ng-model="note" placeholder="write new note here..." rows="5" width="100%">

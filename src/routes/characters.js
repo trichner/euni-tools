@@ -86,42 +86,6 @@ var employmentHistory = [
     }
 ]
 
-var characterLogs = [
-    {
-        converserID: "91541581",
-        converseeID: "698922015",
-        createdAt: new Date("11.1.2014"),
-        log: "THis is the actual log, could be very long",
-        description: "Log by Laura",
-        type: "Interview"
-    },
-    {
-        converserID: "91541580",
-        converseeID: "698922015",
-        createdAt: new Date("3.1.2014"),
-        log: "THis is another log, could be veeeeery long",
-        description: "Log by Dunar",
-        type: "Titles"
-    }
-]
-
-var characterNotes = [
-    {
-        authorID: "91541581",
-        characterID: "698922015",
-        createdAt: new Date("11.1.2014"),
-        note: "THis is the actual note, could be very long",
-        type: "Interview"
-    },
-    {
-        authorID: "91541580",
-        characterID: "698922015",
-        createdAt: new Date("1.1.2014"),
-        note: "THis is another note, could be veeeeery long",
-        type: "Titles"
-    }
-]
-
 var characterApiPulls = [
     {
         pulledBy: "91541581",
