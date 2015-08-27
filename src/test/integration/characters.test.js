@@ -94,4 +94,16 @@ describe('routes/characters', function () {
             })
             .expect(200, done);
     });
+
+    var expectedDetails = {"characterId":698922015,"skillpoints":32000000,"walletBalance":50000000,
+        "dateOfBirth":"2012-08-12T21:04:08.000Z","logonMinutes":0,"logonCount":0,"securityStatus":0}
+
+    it('loads details correctly', function (done) {
+        request(app).get('/api/characters/' + charIdThomion + '/details.json')
+            .expect('Content-Type', /json/)
+            .expect(function (res) {
+                expect(res.body).to.eql(expectedDetails);
+            })
+            .expect(200, done);
+    });
 });

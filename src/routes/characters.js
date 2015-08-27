@@ -4,15 +4,6 @@ var noteService = require('./../services/notes');
 var router = require('express-promise-router')();
 var sanitizer = require('sanitizer');
 
-var characterDetails = {
-    skillpoints: 31000000,
-    walletBalance: 333000000,
-    dateOfBirth: "2010-06-11 18:41:00",
-    logonMinutes: 60 * 555,
-    logonCount: 212,
-    securityStatus: "4.43519929851504"
-}
-
 var employmentHistory = [
     {
         startDate: "2010-06-11 18:41:00",
@@ -168,7 +159,9 @@ router.get('/:id/logs.json', function (req, res, next) {
 });
 
 router.get('/:id/details.json', function (req, res, next) {
-    return res.json(characterDetails)
+    var characterId = req.params.id;
+    return characterService.getCharacterDetailsById(characterId)
+        .then(res.json.bind(res))
 });
 
 router.get('/:id/actions.json', function (req, res, next) {

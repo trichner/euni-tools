@@ -9,7 +9,8 @@ var accountsService = require('./accounts')
 module.exports = {
     getCharacterById : getCharacterById,
     getAccountByCharacterId : getAccountByCharacterId,
-    getLinkedCharactersByCharacterId : getLinkedCharactersByCharacterId
+    getLinkedCharactersByCharacterId : getLinkedCharactersByCharacterId,
+    getCharacterDetailsById : getCharacterDetailsById
 };
 
 function getLinkedCharactersByCharacterId(characterId){
@@ -35,6 +36,28 @@ function getCharacterById(characterId){
     promises.push(models.apiPulls.findOne({where: {characterId: characterId},order: [['pullDate','DESC']]}));
 
     return Q.all(promises).spread(mapCharacter)
+}
+
+function getCharacterDetailsById(characterId){
+    var promises = [];
+    promises.push(models.characters.find({where: {id: characterId}}));
+    promises.push(models.apiPulls.findOne({where: {characterId: characterId},order: [['pullDate','DESC']]}));
+
+    return Q.all(promises).spread(mapCharacterDetails)
+}
+
+function mapCharacterDetails(character, apiPull){
+    apiPull = apiPull || {};
+    return {
+        characterId: character.id,
+        skillpoints: apiPull.totalSP || 0,
+        walletBalance: apiPull.balance || 0,
+        dateOfBirth: apiPull.DoB,
+        logonMinutes: 0,    // TODO
+        logonCount: 0,      // TODO
+        securityStatus: 0   // TODO
+    }
+
 }
 
 function mapCharacter(character, apiPull){
