@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     }, {
-        tableName: 'standingpulls',
+        tableName: 'standingPulls',
         timestamps: false,
         classMethods: {
             associate: function (models) {

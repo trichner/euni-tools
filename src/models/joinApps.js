@@ -52,7 +52,7 @@ module.exports = function (sequelize, DataTypes) {
             field: 'detailsID'
         }
     }, {
-        tableName: 'joinapps',
+        tableName: 'joinApps',
         timestamps: false,
         classMethods: {
             associate: function (models) {

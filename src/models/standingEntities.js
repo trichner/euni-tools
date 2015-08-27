@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     }, {
-        tableName: 'standingentities',
+        tableName: 'standingEntities',
         timestamps: false,
         classMethods: {
             associate: function (models) {

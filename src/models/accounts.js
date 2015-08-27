@@ -58,7 +58,7 @@ module.exports = function (sequelize, DataTypes) {
             },
             getLinkedAccounts: function () {
                 return sequelize.query("SELECT A.* FROM `accounts` A INNER JOIN" +
-                    " `linkedaccounts` L ON A.accountID=L.linkedTo WHERE L.accountID =" +
+                    " `linkedAccounts` L ON A.accountID=L.linkedTo WHERE L.accountID =" +
                     " :id ",
                     {
                         replacements: {

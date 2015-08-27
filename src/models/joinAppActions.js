@@ -27,7 +27,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     }, {
-        tableName: 'joinappactions',
+        tableName: 'joinAppActions',
         timestamps: false,
         classMethods: {
             associate: function (models) {

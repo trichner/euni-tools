@@ -23,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     }, {
-        tableName: 'apipulls_skills',
+        tableName: 'apiPulls_skills',
         timestamps: false,
         classMethods: {
             associate: function (models) {

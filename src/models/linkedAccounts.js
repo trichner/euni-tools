@@ -16,7 +16,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     }, {
-        tableName: 'linkedaccounts',
+        tableName: 'linkedAccounts',
         timestamps: false,
         classMethods: {
             associate: function (models) {

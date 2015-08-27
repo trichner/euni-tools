@@ -100,7 +100,7 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: '1'
         }
     }, {
-        tableName: 'joinappdetails',
+        tableName: 'joinAppDetails',
         timestamps: false,
         classMethods: {
             associate: function (models) {

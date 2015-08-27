@@ -60,7 +60,7 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: '1'
         }
     }, {
-        tableName: 'titleapps',
+        tableName: 'titleApps',
         timestamps: false,
         classMethods: {
             associate: function (models) {

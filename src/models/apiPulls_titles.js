@@ -19,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     }, {
-        tableName: 'apipulls_titles',
+        tableName: 'apiPulls_titles',
         timestamps: false,
         classMethods: {
             associate: function (models) {

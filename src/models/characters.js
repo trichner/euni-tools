@@ -60,7 +60,7 @@ module.exports = function (sequelize, DataTypes) {
                 return sequelize.query("SELECT C.characterID AS id, charName AS name, fUserID AS forumId," +
                     " accountID AS accountId,primaryChar,firstPull,latestPull,charSheetCache" +
                     " FROM `characters` C INNER JOIN" +
-                    " `linkedcharacters` L ON C.characterID=L.linkedTo WHERE L.characterID =" +
+                    " `linkedCharacters` L ON C.characterID=L.linkedTo WHERE L.characterID =" +
                     " :id ",
                     {
                         replacements: {

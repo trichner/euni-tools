@@ -12,7 +12,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     }, {
-        tableName: 'linkedcharacters',
+        tableName: 'linkedCharacters',
         timestamps: false,
         classMethods: {
             associate: function (models) {

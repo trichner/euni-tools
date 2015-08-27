@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     }, {
-        tableName: 'titlequeue',
+        tableName: 'titleQueue',
         timestamps: false,
         classMethods: {
             associate: function (models) {
