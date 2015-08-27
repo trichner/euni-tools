@@ -222,7 +222,9 @@ router.get('/:id/titles.json', function (req, res, next) {
 });
 
 router.get('/:id/linked.json', function (req, res, next) {
-    return res.json(linkedCharacters)
+    var characterId = req.params.id;
+    return characterService.getLinkedCharactersByCharacterId(characterId)
+        .then(res.json.bind(res))
 });
 
 router.post('/:id/notes.json', function (req, res, next) {

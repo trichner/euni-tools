@@ -84,4 +84,14 @@ describe('characters routes', function () {
             })
             .expect(200, done);
     });
+
+    var expectedLinks = [{"id":"698922016","name":"Nib Athmi"}];
+    it('loads linked characters correctly', function (done) {
+        request(app).get('/api/characters/' + charIdThomion + '/linked.json')
+            .expect('Content-Type', /json/)
+            .expect(function (res) {
+                expect(res.body).to.eql(expectedLinks);
+            })
+            .expect(200, done);
+    });
 });

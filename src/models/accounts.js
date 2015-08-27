@@ -64,7 +64,7 @@ module.exports = function (sequelize, DataTypes) {
                         replacements: {
                             id: this.id
                         },
-                        model: accounts, // FIXME does this work?
+                        model: accounts,
                         type: sequelize.QueryTypes.SELECT
                     })
             },

@@ -9,11 +9,22 @@ var accountsService = require('./accounts')
 
 module.exports = {
     getCharacterById : getCharacterById,
-    getAccountByCharacterId : getAccountByCharacterId
+    getAccountByCharacterId : getAccountByCharacterId,
+    getLinkedCharactersByCharacterId : getLinkedCharactersByCharacterId
 };
 
-function getAccountByCharacterId(characterId){
+function getLinkedCharactersByCharacterId(characterId){
     return models.characters.find({where: {id: characterId}})
+        .then(function (character) {
+            return character.getLinkedCharacters();
+        })
+        .then(function (characters) {
+            return characters.map(mapLinkedCharacter)
+        })
+}
+
+function getAccountByCharacterId(characterId){
+    return models.characters.findOne({where: {id: characterId}})
         .then(function (character) {
             return accountsService.getAccountById(character.accountId);
         })
@@ -41,6 +52,13 @@ function mapCharacter(character, apiPull,apiCharacter){
             id: String(apiPull.allianceId || 0),
             name: apiPull.allianceName || ''
         }
+    }
+}
+
+function mapLinkedCharacter(character){
+    return {
+        id: String(character.id),
+        name: character.name
     }
 }
 
