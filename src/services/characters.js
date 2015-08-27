@@ -12,12 +12,6 @@ module.exports = {
     getAccountByCharacterId : getAccountByCharacterId
 };
 
-var account = {
-    id: 1234,
-    apiKey: 1234,
-    apiVCode: "43523452354",
-    updatedAt: Date.now()
-}
 function getAccountByCharacterId(characterId){
     return models.characters.find({where: {id: characterId}})
         .then(function (character) {
@@ -25,19 +19,6 @@ function getAccountByCharacterId(characterId){
         })
 }
 
-var character = {
-    id: "698922015",
-    name: "Thomion",
-    corporation: {
-        id: "917701062",
-        name: "EVE University"
-    },
-    alliance: {
-        id: "937872513",
-        name: "Ivy League"
-    },
-    securityStatus: "4.43519929851504"
-}
 function getCharacterById(characterId){
     var promises = [];
     promises.push(models.characters.find({where: {id: characterId}}));

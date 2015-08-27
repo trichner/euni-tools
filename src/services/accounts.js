@@ -32,26 +32,11 @@ function setAccountDNRById(accountId,characterId,actedBy,type,reason){
         })
 }
 
-var account = {
-    id: 1234,
-    apiKey: 1234,
-    apiVCode: "43523452354",
-    updatedAt: Date.now()
-}
-
 function mapAccount(account){
     return {
         id: String(account.id),
         apiKeyId: String(account.apiKeyId)
     }
-}
-
-var accountDNR = {
-    accountId: "1234",
-    actedBy: "123453",
-    type: "blulb",
-    reason: "do not like him",
-    standing: 0
 }
 
 function mapDoNotRecruit(dnr){
