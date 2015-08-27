@@ -7,6 +7,14 @@
 5. run `npm start` to start the application, you may changed the environment like so: `export 
 NODE_ENV=production`
 
+# How to test
+
+1. Set up the database
+  1. run `cat scripts/tables.mysql/*.sql | mysql -u root -p`
+  2. check if `mysql -u euni-tools -p` works with password `1234`
+2. install dependencies via `npm install`
+3. run `npm test` and assert all tests pass
+
 # Link Collection
 
 - [Eve API Documentation](http://wiki.eve-id.net/APIv2_Page_Index)
