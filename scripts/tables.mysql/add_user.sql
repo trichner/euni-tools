@@ -1,0 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS tools;
+
+CREATE USER 'euni-tools'@'localhost' IDENTIFIED BY '1234';
+GRANT DELETE,INSERT,SELECT,UPDATE ON tools.* TO 'euni-tools'@'localhost';
+FLUSH PRIVILEGES;
