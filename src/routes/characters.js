@@ -214,7 +214,7 @@ router.get('/:id.json', function (req, res, next) {
             res.json(character);
         })
         .catch(function (e) {
-            next(new Error(e));
+            next(e);
         })
 });
 
@@ -247,7 +247,14 @@ router.get('/:id/standings.json', function (req, res, next) {
 });
 
 router.get('/:id/account.json', function (req, res, next) {
-    return res.json(account)
+    var characterId = req.params.id;
+    return characterService.getAccountByCharacterId(characterId)
+        .then(function (account) {
+            res.json(account);
+        })
+        .catch(function (e) {
+            next(e);
+        })
 });
 
 router.get('/:id/titles.json', function (req, res, next) {

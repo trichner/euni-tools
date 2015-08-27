@@ -39,7 +39,6 @@ describe('characters routes', function () {
     };
 
     it('loads correctly', function (done) {
-        this.timeout(10000000);
       request(app).get('/api/characters/' + charIdThomion + '.json')
           .expect('Content-Type', /json/)
           .expect(function (res) {
@@ -48,6 +47,20 @@ describe('characters routes', function () {
           .expect(200, done);
     });
 
+
+    var expectedAccount = {
+        id: "35361",
+        apiKeyId: "1337"
+    };
+
+    it('loads accounts correctly', function (done) {
+        request(app).get('/api/characters/' + charIdThomion + '/account.json')
+            .expect('Content-Type', /json/)
+            .expect(function (res) {
+                expect(res.body).to.eql(expectedAccount);
+            })
+            .expect(200, done);
+    });
 
     //it('lists a user if there is one', function (done) {
     //    this.models.characters.find({where: {characterID: 698922015}}).then(function (character) {
