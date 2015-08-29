@@ -22,7 +22,7 @@ app.factory('API', ['$q','$http',function($q,$http) {
         STANDINGS : '/standings.json',
         EMPLOYMENT_HISTORY : '/employment-history.json',
         APPS : API_PREFIX +'/apps.json',
-        ME : API_PREFIX +'/me.json'
+        CHARACTERS_ME : API_PREFIX +'/characters/me.json'
     }
 
     API.getAccounts = function(){
@@ -35,6 +35,10 @@ app.factory('API', ['$q','$http',function($q,$http) {
 
     API.getCharacter = function(characterID){
         return $http.get(URL.CHARACTERS + '/' + characterID + '.json');
+    }
+
+    API.getCharacterMe = function(){
+        return $http.get(URL.CHARACTERS_ME);
     }
 
     API.getCharacterApiPulls = function(characterID){

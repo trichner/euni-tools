@@ -116,6 +116,12 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
             $scope.actions = res.data;
         })
 
+    API.getCharacterMe()
+        .then(function (res) {
+            $scope.me = res.data;
+            console.log('Welcome ' + $scope.me.name + '!');
+        })
+
     $scope.logout = function () {
         //API.logout()
         //    .then(function () {
