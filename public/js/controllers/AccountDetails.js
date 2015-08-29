@@ -119,17 +119,8 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
     API.getCharacterMe()
         .then(function (res) {
             $scope.me = res.data;
+            $scope.authenticated = true;
             console.log('Welcome ' + $scope.me.name + '!');
         })
-
-    $scope.logout = function () {
-        //API.logout()
-        //    .then(function () {
-        //        Notification.success("Logged out")
-        //    })
-        //    .then(null,function () {
-        //        Notification.error('failed to logout :(');
-        //    })
-    }
 
 }]);

@@ -70,14 +70,14 @@ router.get('/auth/callback', function(req, res, next) {
 
 
 //--- Logout
-router.delete('/auth', function (req, res, next) {
+router.post('/deauth', function (req, res, next) {
     req.session.destroy(function (err) {
         if (err) {
             var err = new Error('Cannot logout')
             err.status = 500;
             next(err);
         } else {
-            res.status(200).end();
+            res.redirect('/euni-tools/'); //TODO hardcoded!
         }
     })
 });

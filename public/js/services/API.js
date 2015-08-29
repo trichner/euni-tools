@@ -11,6 +11,7 @@ app.factory('API', ['$q','$http',function($q,$http) {
     var API_PREFIX = 'api'
     var URL = {
         AUTH : API_PREFIX +'/auth',
+        DEAUTH : API_PREFIX +'/deauth',
         ACCOUNTS : API_PREFIX +'/accounts',
         LINKED: '/linked.json',
         CHARACTERS : API_PREFIX +'/characters',
@@ -95,17 +96,8 @@ app.factory('API', ['$q','$http',function($q,$http) {
         });
     }
 
-
-    API.login = function(){
-        return $http.get(URL.AUTH);
-    }
-
     API.logout = function(){
-        return $http({
-                method: 'DELETE',
-                url: URL.AUTH,
-                headers: {'content-type':'application/json'}
-            })
+        return $http.post(URL.DEAUTH);
     }
 
     return API;
