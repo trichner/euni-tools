@@ -2,69 +2,63 @@
 var passport = require('passport')
 var OAuth2Strategy = require('passport-oauth2').Strategy;
 var session = require('express-session');
-var service = require('./../services/service');
-var credentials = require(__dirname + '/../config/evesso.json');
+var eveSSO = require('./../services/eve-sso');
+var ssoCredentials = require(__dirname + '/../config/evesso.json');
 
-var env       = process.env.NODE_ENV || "development";
+var env       = process.env.NODE_ENV || "production";
 var config    = require(__dirname + '/../config/config.json')[env];
-var authRequired = config.authRequired !== undefined ? config.authRequired : true;
+
 var callbackURL = config.eveSsoCallback || "http://localhost:3000/euni-tools/api/auth/callback";
 
 var router = require('express').Router();
 
+//--- Passport Eve SSO Oauth setup
 passport.serializeUser(function(pilot, done) {
-    done(null, pilot.id);
+    done(null, pilot);
 });
+
 passport.deserializeUser(function(pilotId, done) {
-    service.findPilot(pilotId)
-        .then(function (pilot) {
-            if(pilot){
-                done(null, pilot);
-            }else{
-                done(new Error('Session not established'),null);
-            }
-        })
+    done(null,pilotId);
 });
+
 passport.use(new OAuth2Strategy({
         authorizationURL: 'https://login.eveonline.com/oauth/authorize',
         tokenURL: 'https://login.eveonline.com/oauth/token',
-        clientID: credentials.clientID,
-        clientSecret: credentials.clientSecret,
+        clientID: ssoCredentials.clientID,
+        clientSecret: ssoCredentials.clientSecret,
         callbackURL: callbackURL,
         passReqToCallback: true
     },
     function(req,accessToken, refreshToken, profile, done) {
-        // FIXME
-        console.log("Query: " + req.query.state);
-        //service.createPilot(accessToken)
-        //    .then(function (pilot) {
-        //
-        //        req.session.verified = true;
-        //        req.session.pilotId = pilot.id;
-        //        req.session.verified = true;
-        //        req.session.cookie.maxAge = 3600000*24*365; // a year
-        //        done(null, pilot);
-        //    }, function (err) {
-        //        done(err, null);
-        //    })
+        eveSSO.getCharacterIdFromAccessToken(accessToken)
+            .then(function (characterId) {
+                req.session.actingId = characterId;
+                req.session.verified = true;
+                req.session.cookie.maxAge = 3600000*24*365; // a year
+                done(null, characterId);
+            }, function (err) {
+                done(err, null);
+            })
     }
 ));
 
-// authentication
 router.use(passport.initialize());
 router.use(passport.session());
 
+//--- Login
 router.post('/auth', passport.authenticate('oauth2',{
     state : "HelloWorld" //TODO
 }));
+
+//--- Oauth Callback (needs to be subdir of Login URL)
 router.get('/auth/callback',
     passport.authenticate('oauth2',{
-        successRedirect : '/euni-tools/', //TODO
-        failureRedirect : '/euni-tools/'
+        successRedirect : '/euni-tools/account-details.html', //TODO
+        failureRedirect : '/euni-tools/account-details.html'
     }));
 
 
-/* DELETE verify pilots*/
+//--- Logout
 router.delete('/auth', function(req, res, next) {
     req.session.destroy(function(err){
         if(err){
@@ -77,11 +71,7 @@ router.delete('/auth', function(req, res, next) {
     })
 });
 
-router.get('/auth/test',
-    function(req, res) {
-        res.redirect('/nemesis/');
-    });
-
+//--- Bouncer
 router.use(function(req, res, next) {
     if(req.isAuthenticated()){
         next();

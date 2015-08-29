@@ -22,4 +22,4 @@ global.defer = Q.defer;
 global.waitAll = Q.all;
 
 // Environement for tests
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = 'test';
