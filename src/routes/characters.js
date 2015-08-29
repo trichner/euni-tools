@@ -196,7 +196,7 @@ router.get('/:id/linked.json', function (req, res, next) {
 
 router.post('/:id/notes.json', function (req, res, next) {
     var characterId = req.params.id;
-    var actingId = req.session.characterId;
+    var actingId = req.session.actingId;
     // sanitize!
     var note = sanitizer.sanitize(req.body.note);
     var type = sanitizer.sanitize(req.body.type);
@@ -206,7 +206,7 @@ router.post('/:id/notes.json', function (req, res, next) {
 
 router.post('/:id/logs.json', function (req, res, next) {
     var characterId = req.params.id;
-    var actingId = req.session.characterId;
+    var actingId = req.session.actingId;
 
     // sanitize!
     var log = sanitizer.sanitize(req.body.log);
