@@ -73,11 +73,25 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
     }
 
     $scope.postLog = function (type) {
-        API.postCharacterLog($scope.character.id, type.name, $scope.log);
+        API.postCharacterLog($scope.character.id, type.name, $scope.log)
+            .then(function () {
+                return API.getCharacterLogs($scope.character.id);
+            })
+            .then(function (res) {
+                $scope.logs = res.data;
+                $scope.log = '';
+            })
     }
 
     $scope.postNote = function (type) {
-        API.postCharacterNote($scope.character.id, type.name, $scope.note);
+        API.postCharacterNote($scope.character.id, type.name, $scope.note)
+            .then(function () {
+                return API.getCharacterNotes($scope.character.id);
+            })
+            .then(function (res) {
+                $scope.notes = res.data;
+                $scope.note = '';
+            })
     }
 
     API.getCharacter(characterId)
