@@ -1,0 +1,5 @@
+{
+  "description" : "EVE SSO Application registered for callback 'http://localhost:3000/euni-tools/api/auth/callback' ",
+  "clientID": "80734a8011e348e1955d47553e4de539",
+  "clientSecret": "MTbXLiKEzij4f9XuL6fNDgajPWHjFN87IpnIZ3uc"
+}
