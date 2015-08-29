@@ -36,8 +36,13 @@ passport.use(new OAuth2Strategy({
                 if(req.session.rememberMe){
                     req.session.cookie.maxAge = 3600000 * 24 * 365; // a year
                 }
+                // TODO authorize characterId !!!
+                return characterId;
+            })
+            .then(function (characterId) {
                 done(null, characterId);
-            }, function (err) {
+            })
+            .catch(function (err) {
                 done(err, null);
             })
     }
