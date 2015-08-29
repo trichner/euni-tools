@@ -49,17 +49,24 @@ router.use(passport.session());
 //--- Login
 router.post('/auth', function (req, res, next) {
     req.session.rememberMe = req.body.rememberMe === "on";
+    req.session.loginUrl = req.body.currentUrl;
     next();
-}, passport.authenticate('oauth2', {
-    state: "HelloWorld"
-}));
+}, passport.authenticate('oauth2'));
 
 //--- Oauth Callback (needs to be subdir of Login URL)
-router.get('/auth/callback',
-    passport.authenticate('oauth2', {
-        successRedirect: '/euni-tools/account-details.html', //TODO
-        failureRedirect: '/euni-tools/account-details.html'
-    }));
+router.get('/auth/callback', function(req, res, next) {
+    passport.authenticate('oauth2', function(err, user, info) {
+        if (err) { return next(err); }
+        if (!user) { return res.redirect('/auth'); }
+        // Set up authenticated session
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            // assemble redirect:
+            var redirectUrl = req.session.loginUrl || '/euni-tools/';
+            return res.redirect(redirectUrl);
+        });
+    })(req, res, next);
+});
 
 
 //--- Logout
