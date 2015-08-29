@@ -2,9 +2,10 @@
 
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define('permissions', {
-        groupID: {
+        groupId: {
             type: DataTypes.INTEGER(11),
-            allowNull: false
+            allowNull: false,
+            field: 'groupID'
         },
         name: {
             type: DataTypes.STRING,
