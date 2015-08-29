@@ -1,24 +1,23 @@
-
 var passport = require('passport')
 var OAuth2Strategy = require('passport-oauth2').Strategy;
 var session = require('express-session');
 var eveSSO = require('./../services/eve-sso');
 var ssoCredentials = require(__dirname + '/../config/evesso.json');
 
-var env       = process.env.NODE_ENV || "production";
-var config    = require(__dirname + '/../config/config.json')[env];
+var env = process.env.NODE_ENV || "production";
+var config = require(__dirname + '/../config/config.json')[env];
 
 var callbackURL = config.eveSsoCallback || "http://localhost:3000/euni-tools/api/auth/callback";
 
 var router = require('express').Router();
 
 //--- Passport Eve SSO Oauth setup
-passport.serializeUser(function(pilot, done) {
+passport.serializeUser(function (pilot, done) {
     done(null, pilot);
 });
 
-passport.deserializeUser(function(pilotId, done) {
-    done(null,pilotId);
+passport.deserializeUser(function (pilotId, done) {
+    done(null, pilotId);
 });
 
 passport.use(new OAuth2Strategy({
@@ -29,12 +28,14 @@ passport.use(new OAuth2Strategy({
         callbackURL: callbackURL,
         passReqToCallback: true
     },
-    function(req,accessToken, refreshToken, profile, done) {
+    function (req, accessToken, refreshToken, profile, done) {
         eveSSO.getCharacterIdFromAccessToken(accessToken)
             .then(function (characterId) {
                 req.session.actingId = characterId;
                 req.session.verified = true;
-                req.session.cookie.maxAge = 3600000*24*365; // a year
+                if(req.session.rememberMe){
+                    req.session.cookie.maxAge = 3600000 * 24 * 365; // a year
+                }
                 done(null, characterId);
             }, function (err) {
                 done(err, null);
@@ -47,40 +48,38 @@ router.use(passport.session());
 
 //--- Login
 router.post('/auth', function (req, res, next) {
-    req.session.rememberMe = req.body.rememberMe==="on";
-    console.log("Remember me: " + JSON.stringify(req.body))
+    req.session.rememberMe = req.body.rememberMe === "on";
     next();
-});
-router.post('/auth', passport.authenticate('oauth2',{
-    state : "HelloWorld"
+}, passport.authenticate('oauth2', {
+    state: "HelloWorld"
 }));
 
 //--- Oauth Callback (needs to be subdir of Login URL)
 router.get('/auth/callback',
-    passport.authenticate('oauth2',{
-        successRedirect : '/euni-tools/account-details.html', //TODO
-        failureRedirect : '/euni-tools/account-details.html'
+    passport.authenticate('oauth2', {
+        successRedirect: '/euni-tools/account-details.html', //TODO
+        failureRedirect: '/euni-tools/account-details.html'
     }));
 
 
 //--- Logout
-router.delete('/auth', function(req, res, next) {
-    req.session.destroy(function(err){
-        if(err){
+router.delete('/auth', function (req, res, next) {
+    req.session.destroy(function (err) {
+        if (err) {
             var err = new Error('Cannot logout')
             err.status = 500;
             next(err);
-        }else{
+        } else {
             res.status(200).end();
         }
     })
 });
 
 //--- Bouncer
-router.use(function(req, res, next) {
-    if(req.isAuthenticated()){
+router.use(function (req, res, next) {
+    if (req.isAuthenticated()) {
         next();
-    }else{
+    } else {
         var err = new Error('Please authenticate.')
         err.status = 401;
         return next(err);
