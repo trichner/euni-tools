@@ -46,8 +46,13 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 //--- Login
+router.post('/auth', function (req, res, next) {
+    req.session.rememberMe = req.body.rememberMe==="on";
+    console.log("Remember me: " + JSON.stringify(req.body))
+    next();
+});
 router.post('/auth', passport.authenticate('oauth2',{
-    state : "HelloWorld" //TODO
+    state : "HelloWorld"
 }));
 
 //--- Oauth Callback (needs to be subdir of Login URL)

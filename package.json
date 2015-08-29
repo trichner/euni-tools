@@ -4,6 +4,7 @@
   "private": false,
   "scripts": {
     "start": "node ./src/www",
+    "dev": "NODE_ENV=development node ./src/www",
     "test": "npm run test-unit && npm run test-integration",
     "test-unit": "mocha src/test/unit/*.test.js",
     "test-integration": "mocha src/test/integration/*.test.js"
