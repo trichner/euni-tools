@@ -73,7 +73,8 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
     }
 
     $scope.postLog = function (type) {
-        API.postCharacterLog($scope.character.id, type.name, $scope.log)
+        var description = me.name;
+        API.postCharacterLog($scope.character.id, type.name,description, $scope.log)
             .then(function () {
                 return API.getCharacterLogs($scope.character.id);
             })

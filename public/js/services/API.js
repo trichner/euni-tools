@@ -82,10 +82,11 @@ app.factory('API', ['$q','$http',function($q,$http) {
     }
 
 
-    API.postCharacterLog = function(characterID,type,log){
+    API.postCharacterLog = function(characterID,type,description,log){
         return $http.post(URL.CHARACTERS + '/' + characterID + URL.LOGS,{
             log: log,
-            type: type
+            type: type,
+            description: description
         });
     }
 
