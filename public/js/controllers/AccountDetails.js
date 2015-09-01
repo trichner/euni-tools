@@ -1,29 +1,4 @@
-app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','$window','API','EveIGB','Notification','EveIMG','Linky',function ($scope,$http,$location,$interval,$window,API,EveIGB,Notification,EveIMG,Linky) {
-
-    var mailTemplates = [
-        {
-            name: 'Join Queue',
-            subject : 'Application to EVE University - Join the Queue',
-            body:
-            'Dear {:toName}\n\nThank you for applying to {:corporationName}. I have reviewed your' +
-            ' application and you may now join the queue for an interview.\n\nPlease click {:queueUrl} to' +
-            ' join' +
-            ' the queue for an interview. Make sure you read this wiki page which explains how the queue works. ' +
-            'You will be called for interview in the following in-game chat channel: E-Uni. The interview will ' +
-            'be via an in-game chat rather than through mumble.\n\nDuring your interview we will expect that' +
-            ' you have your {:overviewUrl} and {:mumbleUrl} set up, have obtained {:jumpClonesUrl}' +
-            ' (although this is optional), ' +
-            'and have relocated your possessions if you want to do so. If you still need to do any of' +
-            ' these things please do them before you join the queue for an interview.\n\nIn EVE University, ' +
-            'as with most major corporations, we often find ourselves at war. In order to check whether ' +
-            'we are currently at war, check the "War History" of {:allianceName} for Active Wars. If you' +
-            ' are ' +
-            'unsure, please ask the Personnel Officer who interviews you.\n\nIf you do not join the queue ' +
-            'for an interview for over thirty days you will need to start the process again.\n\nIf you have ' +
-            'any questions please let me know.\n\nBest wishes,\n\{:fromName}\nPersonnel Department\n' +
-            '{:corporationName}'
-        }
-    ];
+app.controller('AccountDetailsCtrl',function ($scope,$http,$location,$interval,$window,API,EveIGB,EveLinky,Notification,EveIMG,Linky) {
 
     var characterId = 698922015;
 
@@ -138,4 +113,4 @@ app.controller('AccountDetailsCtrl',[ '$scope','$http','$location','$interval','
             console.log('Welcome ' + $scope.me.name + '!');
         })
 
-}]);
+});
