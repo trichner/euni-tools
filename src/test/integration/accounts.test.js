@@ -1,6 +1,6 @@
 'use strict';
 
-var app     = require('../../routes/root')
+var app     = require('../../routes')
 var Q       = require('q');
 var expect  = require('expect.js');
 var request = require('supertest');

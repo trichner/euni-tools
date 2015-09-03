@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" id="ng-app" ng-app="euniTools">
+<html lang="en" id="ng-app" ng-app="app">
 <head>
 	<link rel="stylesheet" type="text/css" href="style/bank-gothic-md-bt/stylesheet.css" />
 	<link rel="stylesheet" type="text/css" href="style/angular-ui-notification.min.css" />
@@ -22,30 +22,17 @@
 	<script src="js/services/Minions.js" defer></script>
 	<script src="js/services/eveIGB.js" defer></script>
 	<script src="js/services/eveIMG.js" defer></script>
+	<script src="js/services/eveLinky.js" defer></script>
 	<script src="js/services/linky.js" defer></script>
 </head>
 <body ng-controller="AccountDetailsCtrl">
 <div class="container">
 	<div ng-hide="authenticated" class="col-md-offset-4 col-md-4 col-md-offset-4">
-		<div class="actions">
-			Please log in via EVE Single-Sing-On. <!-- Typo totally intended -->
-			<form action="api/auth" method="POST">
-				<input	class="evessoSubmit" type="submit" value="">
-				<br>
-				<input name="rememberMe" type="checkbox">
-				<input type="hidden" id="currentUrl" name="currentUrl" value="" />
-				<script type="text/javascript">document.getElementById('currentUrl').value = window.location.href;</script>
-				<span>remember me</span>
-			</form>
-		</div>
+		<ng-include src="'partials/login.html'"></ng-include>
 	</div>
+
 	<div ng-hide="!authenticated" class="col-md-offset-4 col-md-4 col-md-offset-4">
-		<div class="actions">
-			Logged in as {{me.name}}.
-			<form action="api/deauth" method="POST">
-				<input type="submit" value="Logout">
-			</form>
-		</div>
+		<ng-include src="'partials/logout.html'"></ng-include>
 	</div>
 	<!-- TITLE -->
 	<div class="row" ng-cloak>

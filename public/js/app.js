@@ -1,1 +1,1 @@
-var app = angular.module('euniTools', ['ui-notification','ui.bootstrap']);
+var app = angular.module('app', ['ui-notification','ui.bootstrap']);
